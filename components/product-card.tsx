@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import { ShoppingCart, Check } from 'lucide-react'
+import Link from 'next/link'
+import { ShoppingCart, Check, Eye } from 'lucide-react'
 import { useCart, type Product } from './cart-context'
 import { Button } from './ui/button'
 import { Card, CardContent } from './ui/card'
@@ -52,21 +53,32 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
           ${isVisible ? animationDirection : 'opacity-0'}`}
         style={{ animationDelay }}
       >
-        <div className="relative aspect-square overflow-hidden bg-muted">
-          <Image
-            src={product.image}
-            alt={product.name}
-            fill
-            className="object-contain p-4 transition-all duration-500 group-hover:scale-110 group-hover:rotate-1"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-          {/* Hover overlay */}
-          <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        </div>
+        <Link href={`/product/${product.id}`} className="block">
+          <div className="relative aspect-square overflow-hidden bg-muted">
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              className="object-contain p-4 transition-all duration-500 group-hover:scale-110 group-hover:rotate-1"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+            {/* Hover overlay */}
+            <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            {/* Quick view button */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+              <span className="bg-background/90 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 shadow-lg">
+                <Eye className="h-4 w-4" />
+                View Details
+              </span>
+            </div>
+          </div>
+        </Link>
         <CardContent className="p-4 md:p-6">
-          <h3 className="font-serif text-lg font-semibold text-foreground mb-2 line-clamp-1 transition-colors duration-300 group-hover:text-primary">
-            {product.name}
-          </h3>
+          <Link href={`/product/${product.id}`}>
+            <h3 className="font-serif text-lg font-semibold text-foreground mb-2 line-clamp-1 transition-colors duration-300 group-hover:text-primary cursor-pointer hover:underline">
+              {product.name}
+            </h3>
+          </Link>
           <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
             {product.description}
           </p>
