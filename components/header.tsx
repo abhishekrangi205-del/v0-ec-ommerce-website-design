@@ -11,9 +11,9 @@ export function Header() {
   const { totalItems, setIsCartOpen } = useCart()
 
   const navLinks = [
-    { href: '#products', label: 'Products' },
-    { href: '#reviews', label: 'Reviews' },
-    { href: '#about', label: 'About' },
+    { href: '/#products', label: 'Products' },
+    { href: '/#reviews', label: 'Reviews' },
+    { href: '/about', label: 'About' },
   ]
 
   return (

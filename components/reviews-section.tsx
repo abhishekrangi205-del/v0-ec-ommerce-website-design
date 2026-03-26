@@ -1,4 +1,7 @@
-import { Star } from 'lucide-react'
+"use client"
+
+import { useEffect, useRef, useState } from 'react'
+import { Star, Quote } from 'lucide-react'
 import { Card, CardContent } from './ui/card'
 
 interface Review {
@@ -46,7 +49,7 @@ function StarRating({ rating }: { rating: number }) {
       {[...Array(5)].map((_, i) => (
         <Star
           key={i}
-          className={`h-4 w-4 ${
+          className={`h-4 w-4 transition-all duration-300 ${
             i < rating ? 'fill-primary text-primary' : 'text-muted'
           }`}
         />
@@ -56,10 +59,31 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 export function ReviewsSection() {
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section id="reviews" className="py-16 md:py-24 bg-muted/50">
+    <section ref={sectionRef} id="reviews" className="py-16 md:py-24 bg-muted/50 overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <div className={`text-center mb-12 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
           <span className="text-sm font-semibold text-primary tracking-wider uppercase">
             Testimonials
           </span>
@@ -72,15 +96,23 @@ export function ReviewsSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {reviews.map((review) => (
-            <Card key={review.id} className="bg-card">
-              <CardContent className="p-6">
+          {reviews.map((review, index) => (
+            <Card 
+              key={review.id} 
+              className={`bg-card group hover:shadow-lg transition-all duration-300 hover:-translate-y-2 relative overflow-hidden
+                ${isVisible ? (index % 2 === 0 ? 'animate-slide-in-left' : 'animate-slide-in-right') : 'opacity-0'}`}
+              style={{ animationDelay: `${(index + 1) * 100}ms` }}
+            >
+              <CardContent className="p-6 relative">
+                {/* Quote decoration */}
+                <Quote className="absolute top-4 right-4 h-8 w-8 text-primary/10 transition-all duration-300 group-hover:text-primary/20 group-hover:scale-110" />
+                
                 <StarRating rating={review.rating} />
-                <p className="text-foreground mt-4 mb-4 leading-relaxed">
+                <p className="text-foreground mt-4 mb-4 leading-relaxed relative z-10">
                   {`"${review.text}"`}
                 </p>
                 <div className="border-t border-border pt-4">
-                  <p className="font-semibold text-foreground">{review.name}</p>
+                  <p className="font-semibold text-foreground transition-colors duration-300 group-hover:text-primary">{review.name}</p>
                   <p className="text-sm text-muted-foreground">{review.location}</p>
                 </div>
               </CardContent>

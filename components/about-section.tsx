@@ -1,3 +1,6 @@
+"use client"
+
+import { useEffect, useRef, useState } from 'react'
 import { Leaf, Award, Heart, MapPin } from 'lucide-react'
 
 const features = [
@@ -24,10 +27,31 @@ const features = [
 ]
 
 export function AboutSection() {
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section id="about" className="py-16 md:py-24 bg-background">
+    <section ref={sectionRef} id="about" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <div className={`text-center mb-12 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
           <span className="text-sm font-semibold text-primary tracking-wider uppercase">
             Why Choose Us
           </span>
@@ -40,12 +64,16 @@ export function AboutSection() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((feature) => (
-            <div key={feature.title} className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4">
-                <feature.icon className="h-8 w-8" />
+          {features.map((feature, index) => (
+            <div 
+              key={feature.title} 
+              className={`text-center group ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
+              style={{ animationDelay: `${(index + 1) * 100}ms` }}
+            >
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20">
+                <feature.icon className="h-8 w-8 transition-transform duration-300 group-hover:scale-110" />
               </div>
-              <h3 className="font-semibold text-foreground text-lg mb-2">
+              <h3 className="font-semibold text-foreground text-lg mb-2 transition-colors duration-300 group-hover:text-primary">
                 {feature.title}
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
