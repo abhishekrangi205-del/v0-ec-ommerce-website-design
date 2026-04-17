@@ -4,14 +4,14 @@ import { useState, useEffect, useRef } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowLeft, ShoppingCart, Check, Minus, Plus, ChevronLeft, ChevronRight, Truck, Shield, Leaf, Star } from 'lucide-react'
+import { ArrowLeft, ShoppingCart, Check, Minus, Plus, ChevronLeft, ChevronRight, Truck, Shield, Leaf, Star, Zap } from 'lucide-react'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { CartSidebar } from '@/components/cart-sidebar'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { useCart } from '@/components/cart-context'
-import { getProductById, getRelatedProducts, makingProcess, type ProductDetails } from '@/lib/products'
+import { getProductById, getRelatedProducts, makingProcess, badgeConfig, type ProductDetails } from '@/lib/products'
 
 export default function ProductPage() {
   const params = useParams()
@@ -33,7 +33,7 @@ export default function ProductPage() {
     const foundProduct = getProductById(id)
     if (foundProduct) {
       setProduct(foundProduct)
-      setRelatedProducts(getRelatedProducts(id, 3))
+      setRelatedProducts(getRelatedProducts(id, 4))
       setSelectedImage(0)
       setQuantity(1)
     }
@@ -169,15 +169,26 @@ export default function ProductPage() {
 
             {/* Product Info */}
             <div className="space-y-6">
+              {/* Badges */}
+              <div className="flex flex-wrap gap-2">
+                {product.badges.map((badge) => {
+                  const config = badgeConfig[badge]
+                  return (
+                    <span
+                      key={badge}
+                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-bold rounded-full ${config.className}`}
+                    >
+                      <span>{config.icon}</span>
+                      <span>{config.label}</span>
+                    </span>
+                  )
+                })}
+                <span className="px-3 py-1.5 bg-muted text-muted-foreground text-sm font-medium rounded-full">
+                  {product.weight}
+                </span>
+              </div>
+
               <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="px-3 py-1 bg-accent/10 text-accent text-xs font-medium rounded-full">
-                    {product.origin}
-                  </span>
-                  <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">
-                    {product.weight}
-                  </span>
-                </div>
                 <h1 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-3">
                   {product.name}
                 </h1>
@@ -189,7 +200,7 @@ export default function ProductPage() {
                   </div>
                   <span className="text-sm text-muted-foreground">(47 reviews)</span>
                 </div>
-                <p className="text-2xl md:text-3xl font-bold text-primary">
+                <p className="text-3xl md:text-4xl font-bold text-primary">
                   ${product.price.toFixed(2)}
                 </p>
               </div>
@@ -198,15 +209,30 @@ export default function ProductPage() {
                 {product.longDescription}
               </p>
 
+              {/* Benefits */}
+              <div className="bg-muted/50 rounded-xl p-5">
+                <h4 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                  <Zap className="h-5 w-5 text-primary" />
+                  Key Benefits
+                </h4>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {product.benefits.map((benefit, index) => (
+                    <li key={index} className="flex items-center gap-2 text-sm">
+                      <Check className="h-4 w-4 text-green-500 flex-shrink-0" />
+                      <span>{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
               {/* Features */}
               <div className="grid grid-cols-2 gap-3">
-                {product.features.map((feature, index) => (
+                {product.features.slice(0, 6).map((feature, index) => (
                   <div 
                     key={index}
-                    className="flex items-center gap-2 text-sm"
-                    style={{ animationDelay: `${index * 100}ms` }}
+                    className="flex items-center gap-2 text-sm text-muted-foreground"
                   >
-                    <Check className="h-4 w-4 text-accent flex-shrink-0" />
+                    <Check className="h-4 w-4 text-primary flex-shrink-0" />
                     <span>{feature}</span>
                   </div>
                 ))}
@@ -214,20 +240,20 @@ export default function ProductPage() {
 
               {/* Quantity & Add to Cart */}
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <div className="flex items-center border rounded-lg">
+                <div className="flex items-center border rounded-lg bg-muted/30">
                   <button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="p-3 hover:bg-muted transition-colors"
+                    className="p-3 hover:bg-muted transition-colors rounded-l-lg"
                     aria-label="Decrease quantity"
                   >
                     <Minus className="h-4 w-4" />
                   </button>
-                  <span className="px-6 py-3 font-medium min-w-[60px] text-center">
+                  <span className="px-6 py-3 font-semibold min-w-[60px] text-center">
                     {quantity}
                   </span>
                   <button
                     onClick={() => setQuantity(quantity + 1)}
-                    className="p-3 hover:bg-muted transition-colors"
+                    className="p-3 hover:bg-muted transition-colors rounded-r-lg"
                     aria-label="Increase quantity"
                   >
                     <Plus className="h-4 w-4" />
@@ -237,7 +263,7 @@ export default function ProductPage() {
                 <Button
                   onClick={handleAddToCart}
                   size="lg"
-                  className={`flex-1 gap-2 btn-glow text-lg py-6 transition-all duration-300 ${isAdded ? 'bg-accent' : ''}`}
+                  className={`flex-1 gap-2 btn-glow text-lg py-6 font-bold transition-all duration-300 ${isAdded ? 'bg-green-600 hover:bg-green-600' : ''}`}
                 >
                   {isAdded ? (
                     <>
@@ -404,7 +430,7 @@ export default function ProductPage() {
                       </div>
                       <div className="flex justify-between py-1 border-b">
                         <span>Protein</span>
-                        <span className="font-medium">{product.nutrition.protein}</span>
+                        <span className="font-bold text-primary">{product.nutrition.protein}</span>
                       </div>
                       <div className="flex justify-between py-1 border-b">
                         <span>Fat</span>
@@ -451,24 +477,33 @@ export default function ProductPage() {
           </div>
         </section>
 
-        {/* Related Products */}
+        {/* You May Also Like - Upsell Section */}
         <section className="py-16 md:py-24 bg-card">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground">
-                You Might Also Like
+                You May Also Like
               </h2>
+              <p className="text-muted-foreground mt-2">
+                Customers who bought this also enjoyed these products
+              </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {relatedProducts.map((relatedProduct) => (
                 <Link 
                   key={relatedProduct.id} 
                   href={`/product/${relatedProduct.id}`}
                   className="group"
                 >
-                  <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-                    <div className="relative aspect-square bg-muted">
+                  <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div className="relative aspect-square bg-muted/50">
+                      {/* Badge */}
+                      {relatedProduct.badges.length > 0 && (
+                        <span className={`absolute top-3 left-3 z-10 inline-flex items-center gap-1 px-2 py-1 text-xs font-bold rounded-md ${badgeConfig[relatedProduct.badges[0]].className}`}>
+                          {badgeConfig[relatedProduct.badges[0]].icon} {badgeConfig[relatedProduct.badges[0]].label}
+                        </span>
+                      )}
                       <Image
                         src={relatedProduct.image}
                         alt={relatedProduct.name}
@@ -477,10 +512,10 @@ export default function ProductPage() {
                       />
                     </div>
                     <CardContent className="p-4">
-                      <h3 className="font-medium text-foreground mb-1 line-clamp-1 group-hover:text-primary transition-colors">
+                      <h3 className="font-semibold text-foreground mb-1 line-clamp-1 group-hover:text-primary transition-colors">
                         {relatedProduct.name}
                       </h3>
-                      <p className="text-primary font-bold">
+                      <p className="text-xl font-bold text-primary">
                         ${relatedProduct.price.toFixed(2)}
                       </p>
                     </CardContent>
@@ -488,19 +523,42 @@ export default function ProductPage() {
                 </Link>
               ))}
             </div>
-
-            <div className="text-center mt-10">
-              <Button asChild variant="outline" size="lg">
-                <Link href="/#products">
-                  <ArrowLeft className="h-4 w-4 mr-2" />
-                  Back to All Products
-                </Link>
-              </Button>
-            </div>
           </div>
         </section>
-      </main>
 
+        {/* Sticky Add to Cart (Mobile) */}
+        <div className="fixed bottom-0 left-0 right-0 p-4 bg-background/95 backdrop-blur-sm border-t shadow-2xl lg:hidden z-40">
+          <div className="flex items-center gap-3">
+            <div className="flex-1">
+              <p className="text-sm text-muted-foreground line-clamp-1">{product.name}</p>
+              <p className="text-xl font-bold text-primary">${(product.price * quantity).toFixed(2)}</p>
+            </div>
+            <div className="flex items-center border rounded-lg">
+              <button
+                onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                className="p-2 hover:bg-muted transition-colors"
+              >
+                <Minus className="h-4 w-4" />
+              </button>
+              <span className="px-3 font-semibold">{quantity}</span>
+              <button
+                onClick={() => setQuantity(quantity + 1)}
+                className="p-2 hover:bg-muted transition-colors"
+              >
+                <Plus className="h-4 w-4" />
+              </button>
+            </div>
+            <Button
+              onClick={handleAddToCart}
+              className={`gap-2 font-bold ${isAdded ? 'bg-green-600' : ''}`}
+            >
+              {isAdded ? <Check className="h-4 w-4" /> : <ShoppingCart className="h-4 w-4" />}
+              {isAdded ? 'Added' : 'Add'}
+            </Button>
+          </div>
+        </div>
+      </main>
+      
       <Footer />
       <CartSidebar />
     </div>

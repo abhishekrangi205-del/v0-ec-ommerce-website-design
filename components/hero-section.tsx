@@ -50,26 +50,30 @@ export function HeroSection() {
       {/* Animated Content */}
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-2xl">
-          <span 
-            className={`inline-block px-4 py-1.5 bg-primary/90 text-primary-foreground text-xs md:text-sm font-semibold rounded-full mb-6 
-              ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
+          <div 
+            className={`flex items-center gap-3 mb-6 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
             style={{ animationDelay: '0.1s' }}
           >
-            Made in Canada
-          </span>
+            <span className="inline-block px-4 py-1.5 bg-primary text-primary-foreground text-xs md:text-sm font-bold rounded-full">
+              Ontario Made
+            </span>
+            <span className="inline-block px-4 py-1.5 bg-white/20 text-white text-xs md:text-sm font-semibold rounded-full backdrop-blur-sm">
+              Premium Quality
+            </span>
+          </div>
           <h1 
             className={`font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight text-balance
               ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
             style={{ animationDelay: '0.2s' }}
           >
-            Premium Beef Jerky, Crafted with Care
+            Fuel Your Day with Premium Canadian Jerky
           </h1>
           <p 
             className={`text-lg md:text-xl text-white/90 mb-8 leading-relaxed max-w-xl
               ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
             style={{ animationDelay: '0.4s' }}
           >
-            All natural ingredients, no fillers, zero sugar. Experience the authentic taste of Canadian wilderness in every bite.
+            Up to 45g protein per bag. Zero sugar. No fillers. Handcrafted in Ontario with 100% premium beef for athletes and snack lovers alike.
           </p>
           <div 
             className={`flex flex-col sm:flex-row gap-4
