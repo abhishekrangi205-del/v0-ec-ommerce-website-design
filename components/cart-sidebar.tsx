@@ -1,14 +1,34 @@
 "use client"
 
+import { useMemo } from 'react'
 import Image from 'next/image'
-import { X, Plus, Minus, ShoppingBag } from 'lucide-react'
+import { X, Plus, Minus, ShoppingBag, ShoppingCart } from 'lucide-react'
 import { useCart } from './cart-context'
 import { Button } from './ui/button'
+import { products, badgeConfig } from '@/lib/products'
 
 export function CartSidebar() {
-  const { items, removeFromCart, updateQuantity, totalPrice, isCartOpen, setIsCartOpen, clearCart } = useCart()
+  const { items, addToCart, removeFromCart, updateQuantity, totalPrice, isCartOpen, setIsCartOpen, clearCart } = useCart()
+
+  // Get upsell products - products not in cart, limit to 3
+  const upsellProducts = useMemo(() => {
+    const cartIds = items.map(item => item.id)
+    return products
+      .filter(p => !cartIds.includes(p.id))
+      .slice(0, 3)
+  }, [items])
 
   if (!isCartOpen) return null
+
+  const handleAddUpsell = (product: typeof products[0]) => {
+    addToCart({
+      id: product.id,
+      name: product.name,
+      description: product.description,
+      price: product.price,
+      image: product.image,
+    })
+  }
 
   return (
     <>
@@ -26,6 +46,11 @@ export function CartSidebar() {
           <h2 className="font-serif text-xl font-semibold text-foreground flex items-center gap-2">
             <ShoppingBag className="h-5 w-5" />
             Your Cart
+            {items.length > 0 && (
+              <span className="ml-2 px-2 py-0.5 bg-primary text-primary-foreground text-xs font-bold rounded-full">
+                {items.reduce((acc, item) => acc + item.quantity, 0)}
+              </span>
+            )}
           </h2>
           <Button
             variant="ghost"
@@ -107,6 +132,49 @@ export function CartSidebar() {
                   </div>
                 </div>
               ))}
+
+              {/* Upsell Section */}
+              {items.length > 0 && upsellProducts.length > 0 && (
+                <div className="pt-4 border-t">
+                  <h4 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
+                    Customers Also Bought
+                  </h4>
+                  <div className="space-y-3">
+                    {upsellProducts.map((product) => (
+                      <div 
+                        key={product.id} 
+                        className="flex items-center gap-3 p-2 bg-background rounded-lg border border-border/50"
+                      >
+                        <div className="relative w-12 h-12 flex-shrink-0 bg-muted rounded overflow-hidden">
+                          <Image
+                            src={product.image}
+                            alt={product.name}
+                            fill
+                            className="object-contain p-1"
+                          />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xs font-medium text-foreground line-clamp-1">
+                            {product.name}
+                          </p>
+                          <p className="text-sm font-bold text-primary">
+                            ${product.price.toFixed(2)}
+                          </p>
+                        </div>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="h-8 text-xs"
+                          onClick={() => handleAddUpsell(product)}
+                        >
+                          <Plus className="h-3 w-3 mr-1" />
+                          Add
+                        </Button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -114,18 +182,38 @@ export function CartSidebar() {
         {/* Footer */}
         {items.length > 0 && (
           <div className="border-t border-border p-4 space-y-4">
+            {/* Free shipping progress */}
+            {totalPrice < 50 && (
+              <div className="text-center">
+                <div className="h-2 bg-muted rounded-full overflow-hidden mb-2">
+                  <div 
+                    className="h-full bg-primary transition-all duration-500"
+                    style={{ width: `${Math.min((totalPrice / 50) * 100, 100)}%` }}
+                  />
+                </div>
+                <p className="text-xs text-muted-foreground">
+                  Add <span className="font-semibold text-primary">${(50 - totalPrice).toFixed(2)}</span> more for free shipping!
+                </p>
+              </div>
+            )}
+            {totalPrice >= 50 && (
+              <p className="text-center text-sm text-green-600 font-medium">
+                You qualify for FREE shipping!
+              </p>
+            )}
+
             <div className="flex items-center justify-between text-lg">
               <span className="font-medium text-foreground">Subtotal</span>
               <span className="font-bold text-foreground">
                 ${totalPrice.toFixed(2)}
               </span>
             </div>
-            <Button className="w-full" size="lg">
+            <Button className="w-full btn-glow font-bold" size="lg">
               Checkout
             </Button>
             <Button
               variant="ghost"
-              className="w-full"
+              className="w-full text-muted-foreground"
               onClick={clearCart}
             >
               Clear Cart
