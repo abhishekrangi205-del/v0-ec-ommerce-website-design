@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from 'react'
-import { Star, Quote } from 'lucide-react'
+import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Card, CardContent } from './ui/card'
 
 interface Review {
@@ -60,7 +60,9 @@ function StarRating({ rating }: { rating: number }) {
 
 export function ReviewsSection() {
   const [isVisible, setIsVisible] = useState(false)
+  const [currentIndex, setCurrentIndex] = useState(0)
   const sectionRef = useRef<HTMLElement>(null)
+  const carouselRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -80,6 +82,17 @@ export function ReviewsSection() {
     return () => observer.disconnect()
   }, [])
 
+  const scrollCarousel = (direction: 'left' | 'right') => {
+    if (carouselRef.current) {
+      const scrollAmount = 320 // Card width + gap
+      if (direction === 'left') {
+        carouselRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' })
+      } else {
+        carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' })
+      }
+    }
+  }
+
   return (
     <section ref={sectionRef} id="reviews" className="py-16 md:py-24 bg-muted/50 overflow-hidden">
       <div className="container mx-auto px-4">
@@ -95,7 +108,8 @@ export function ReviewsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Desktop Grid Layout */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {reviews.map((review, index) => (
             <Card 
               key={review.id} 
@@ -118,6 +132,54 @@ export function ReviewsSection() {
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        {/* Mobile Carousel Layout */}
+        <div className="md:hidden relative">
+          <div 
+            ref={carouselRef}
+            className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4"
+            style={{ scrollBehavior: 'smooth' }}
+          >
+            {reviews.map((review, index) => (
+              <Card 
+                key={review.id} 
+                className="flex-shrink-0 w-80 bg-card group hover:shadow-lg transition-all duration-300 relative overflow-hidden snap-center"
+              >
+                <CardContent className="p-6 relative">
+                  {/* Quote decoration */}
+                  <Quote className="absolute top-4 right-4 h-8 w-8 text-primary/10 transition-all duration-300 group-hover:text-primary/20 group-hover:scale-110" />
+                  
+                  <StarRating rating={review.rating} />
+                  <p className="text-foreground mt-4 mb-4 leading-relaxed relative z-10 text-sm">
+                    {`"${review.text}"`}
+                  </p>
+                  <div className="border-t border-border pt-4">
+                    <p className="font-semibold text-foreground transition-colors duration-300 group-hover:text-primary">{review.name}</p>
+                    <p className="text-sm text-muted-foreground">{review.location}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Mobile Carousel Controls */}
+          <div className="flex justify-center gap-2 mt-6">
+            <button
+              onClick={() => scrollCarousel('left')}
+              className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-all duration-300"
+              aria-label="Previous review"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              onClick={() => scrollCarousel('right')}
+              className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-all duration-300"
+              aria-label="Next review"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
         </div>
       </div>
     </section>

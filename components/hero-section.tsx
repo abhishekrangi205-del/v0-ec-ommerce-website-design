@@ -7,35 +7,21 @@ import { Button } from './ui/button'
 import { ArrowRight } from 'lucide-react'
 
 export function HeroSection() {
-  const [scrollY, setScrollY] = useState(0)
-  const heroRef = useRef<HTMLElement>(null)
   const [isVisible, setIsVisible] = useState(false)
+  const heroRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     setIsVisible(true)
-    
-    const handleScroll = () => {
-      if (heroRef.current) {
-        const rect = heroRef.current.getBoundingClientRect()
-        if (rect.bottom > 0) {
-          setScrollY(window.scrollY)
-        }
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
     <section 
       ref={heroRef}
-      className="relative min-h-[70vh] md:min-h-[85vh] flex items-center overflow-hidden parallax-hero"
+      className="relative min-h-[50vh] md:min-h-[85vh] flex items-center justify-center md:items-center overflow-hidden"
     >
-      {/* Parallax Background Image */}
+      {/* Background Image */}
       <div 
-        className="absolute inset-0 z-0 parallax-bg"
-        style={{ transform: `translateY(${scrollY * 0.3}px) scale(1.1)` }}
+        className="absolute inset-0 z-0"
       >
         <Image
           src="/images/hero.jpg"
@@ -49,7 +35,8 @@ export function HeroSection() {
 
       {/* Animated Content */}
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-2xl">
+        {/* Desktop Content - Hidden on Mobile */}
+        <div className="max-w-2xl hidden md:block">
           <div 
             className={`flex items-center gap-3 mb-6 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
             style={{ animationDelay: '0.1s' }}
@@ -98,11 +85,21 @@ export function HeroSection() {
             </Button>
           </div>
         </div>
+
+        {/* Mobile Content - Button Only */}
+        <div className="md:hidden flex items-center justify-center">
+          <Button asChild size="lg" className="text-base btn-glow">
+            <Link href="#products">
+              View Products
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator - Desktop only */}
       <div 
-        className={`absolute bottom-8 left-1/2 -translate-x-1/2 z-10 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
+        className={`absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:block ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
         style={{ animationDelay: '1s' }}
       >
         <div className="w-6 h-10 rounded-full border-2 border-white/40 flex items-start justify-center p-1">
