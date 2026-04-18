@@ -1,12 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2024-12-18.acme',
-})
-
 export async function POST(request: NextRequest) {
   try {
+    const secretKey = process.env.STRIPE_SECRET_KEY
+    
+    if (!secretKey) {
+      console.error('STRIPE_SECRET_KEY not found in environment')
+      return NextResponse.json(
+        { error: 'Stripe configuration missing' },
+        { status: 500 }
+      )
+    }
+
+    const stripe = new Stripe(secretKey)
     const { cartItems } = await request.json()
 
     if (!cartItems || cartItems.length === 0) {
@@ -26,19 +33,35 @@ export async function POST(request: NextRequest) {
       quantity: item.quantity,
     }))
 
+    // Get the base URL from various sources
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ||
+                   (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : null) ||
+                   request.headers.get('origin') ||
+                   'http://localhost:3000'
+
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: lineItems,
       mode: 'payment',
-      success_url: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/checkout/success`,
-      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/checkout/cancel`,
+      success_url: `${baseUrl}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${baseUrl}/checkout/cancel`,
     })
 
-    return NextResponse.json({ sessionId: session.id, url: session.url })
+    console.log('Checkout session created:', session.id)
+
+    if (!session.url) {
+      throw new Error('No checkout URL returned from Stripe')
+    }
+
+    return NextResponse.json({ 
+      sessionId: session.id, 
+      url: session.url 
+    })
   } catch (error) {
-    console.error('Stripe error:', error)
+    console.error('Stripe checkout error:', error)
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
     return NextResponse.json(
-      { error: 'Failed to create checkout session' },
+      { error: `Failed to create checkout session: ${errorMessage}` },
       { status: 500 }
     )
   }
