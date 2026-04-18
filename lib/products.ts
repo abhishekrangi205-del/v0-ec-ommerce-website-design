@@ -103,7 +103,7 @@ export const products: ProductDetails[] = [
     name: 'Carnivore Crave Traditional',
     description: 'High protein beef jerky bites with classic traditional flavor. 45g protein, 0g sugar.',
     longDescription: 'Fuel your day with our Carnivore Crave Traditional beef jerky bites. Packed with an incredible 45g of protein per bag and zero sugar, these bite-sized pieces are perfect for athletes, gym-goers, and anyone seeking a powerful protein snack. The traditional recipe delivers authentic beef flavor without any unnecessary additives.',
-    price: 16.99,
+    price: 1.00,
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Carnivore%20Crave%20Traditional-RPNRMJoGpc6iqp5WRedTXvq2N7sEZP.png',
     gallery: [
       { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Carnivore%20Crave%20Traditional-RPNRMJoGpc6iqp5WRedTXvq2N7sEZP.png', alt: 'Carnivore Crave Traditional Package' },
