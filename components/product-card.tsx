@@ -84,9 +84,11 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
           ${isVisible ? animationDirection : 'opacity-0'}`}
         style={{ animationDelay }}
       >
-        {/* Badges */}
+        {/* Badges - hidden on mobile */}
         {product.badges && product.badges.length > 0 && (
-          <ProductBadges badges={product.badges} />
+          <div className="hidden md:block">
+            <ProductBadges badges={product.badges} />
+          </div>
         )}
 
         <Link href={`/product/${product.id}`} className="block">
@@ -100,8 +102,8 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
             />
             {/* Hover overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            {/* Quick view button */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+            {/* Quick view button - desktop only */}
+            <div className="hidden md:flex absolute inset-0 items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
               <span className="bg-background/95 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 shadow-xl border">
                 <Eye className="h-4 w-4" />
                 View Details
