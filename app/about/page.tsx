@@ -15,12 +15,14 @@ const tabs = [
     label: 'Our Story',
     icon: Clock,
     content: {
-      title: 'From Passion to Premium',
-      description: `It all started in 2015 with a simple idea: create beef jerky that we'd be proud to share with our own families. Frustrated with mass-produced snacks loaded with artificial ingredients, our founder set out to craft something different.
+      title: 'Our Story',
+      description: `Local Jerky Plus Inc. started with a simple idea and a passion for quality.
 
-Starting in a small kitchen in rural Ontario, we experimented with traditional recipes, sourcing the finest Canadian beef and selecting only natural seasonings. Word spread quickly through local farmers' markets, and what began as a weekend hobby transformed into a mission.
+Founder Shawn Scott began making jerky out of his home in Copper Cliff when he was young. After sharing it with friends, they encouraged him to turn it into a business. What started as a small home operation quickly grew into something much bigger.
 
-Today, Local Jerky Plus operates from a modern facility in Ontario, but we've never forgotten our roots. Every batch is still crafted with the same care and attention that went into those first kitchen experiments.`,
+Taking that advice seriously, Shawn built a licensed meat kitchen in his home and became provincially licensed through the Ministry of Agriculture, Food and Rural Affairs.
+
+Since officially launching in 2019, Local Jerky Plus has expanded into a fully licensed provincial meat plant located in Lively, Ontario. Today, the company produces thousands of packs of jerky daily while staying true to its roots of quality and consistency.`,
       image: '/images/founder.jpg'
     }
   },
@@ -29,16 +31,19 @@ Today, Local Jerky Plus operates from a modern facility in Ontario, but we've ne
     label: 'Our Mission',
     icon: Target,
     content: {
-      title: 'Redefining Snack Food',
-      description: `Our mission is simple: prove that delicious snacks don't have to compromise on health or quality. We believe that what you put into your body matters, which is why we're committed to:
+      title: 'Our Mission',
+      description: `At Local Jerky Plus, our mission is simple:
 
-• Using only 100% Canadian beef from trusted local farms
-• Never adding artificial preservatives, colors, or flavors
-• Maintaining zero sugar in all our products
-• Supporting sustainable farming practices
-• Creating jobs in our local Ontario community
+To deliver high-quality, high-protein jerky made locally with clean ingredients and no compromises.
 
-We're not just making jerky—we're building a movement toward better, cleaner snacking that doesn't sacrifice taste for health.`,
+We are committed to:
+
+- Producing premium jerky with exceptional taste and nutrition
+- Offering high-protein, low to zero sugar options
+- Maintaining strict quality standards in a licensed facility
+- Supporting local production and Canadian-made products
+
+Our goal is to fuel active lifestyles with products people can trust.`,
       image: '/images/process.jpg'
     }
   },
@@ -47,16 +52,12 @@ We're not just making jerky—we're building a movement toward better, cleaner s
     label: 'Our Team',
     icon: Users,
     content: {
-      title: 'The People Behind the Product',
-      description: `Behind every bag of Local Jerky Plus is a dedicated team of food lovers, quality experts, and passionate Canadians. From our master jerky makers who've perfected the art of seasoning and smoking, to our quality control team who taste-tests every batch, everyone here shares the same commitment to excellence.
+      title: 'Our Team',
+      description: `Local Jerky Plus Inc. was founded by Shawn Scott, whose dedication and vision turned a small home operation into a growing business.
 
-Our team includes:
-• Expert jerky artisans with decades of combined experience
-• Quality assurance specialists ensuring consistent perfection
-• Local farmers who share our values
-• Customer service heroes who treat every customer like family
+Today, our team works out of a provincially licensed meat plant in Lively, Ontario, producing thousands of packs of jerky each day. Every member of our team is committed to maintaining quality, consistency, and efficiency at every step of the process.
 
-We're proud to be a tight-knit team that genuinely loves what we do.`,
+From production to packaging, we take pride in delivering a product that represents hard work, local roots, and high standards.`,
       image: '/images/about-hero.jpg'
     }
   }
