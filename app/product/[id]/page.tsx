@@ -314,7 +314,7 @@ export default function ProductPage() {
                   bgClass: 'bg-gradient-to-br from-zinc-900 to-zinc-800',
                   accentClass: 'text-red-500',
                   borderClass: 'hover:border-red-500/50',
-                  href: '/#products?category=carnivore-crave',
+                  href: '/category/carnivore-crave',
                 },
                 {
                   name: 'Beef Jerky Slabs',
@@ -324,7 +324,7 @@ export default function ProductPage() {
                   bgClass: 'bg-gradient-to-br from-stone-800 to-stone-700',
                   accentClass: 'text-orange-500',
                   borderClass: 'hover:border-orange-500/50',
-                  href: '/#products?category=beef-jerky-slabs',
+                  href: '/category/beef-jerky-slabs',
                 },
                 {
                   name: 'Oakridge Beef Slabs',
@@ -334,7 +334,7 @@ export default function ProductPage() {
                   bgClass: 'bg-gradient-to-br from-zinc-900 to-zinc-800',
                   accentClass: 'text-amber-500',
                   borderClass: 'hover:border-amber-500/50',
-                  href: '/#products?category=oakridge',
+                  href: '/category/oakridge',
                 },
               ].map((category, index) => {
                 const Icon = category.icon

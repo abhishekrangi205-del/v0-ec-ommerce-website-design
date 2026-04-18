@@ -66,14 +66,14 @@ export function HeroSection() {
               ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
             style={{ animationDelay: '0.2s' }}
           >
-            Fuel Your Day with Premium Canadian Jerky
+            Fuel Your Day with Clean Protein
           </h1>
           <p 
             className={`text-lg md:text-xl text-white/90 mb-8 leading-relaxed max-w-xl
               ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
             style={{ animationDelay: '0.4s' }}
           >
-            Up to 45g protein per bag. Zero sugar. No fillers. Handcrafted in Ontario with 100% premium beef for athletes and snack lovers alike.
+            Up to 45g protein. Low to zero sugar. No fillers. Just real beef.
           </p>
           <div 
             className={`flex flex-col sm:flex-row gap-4
