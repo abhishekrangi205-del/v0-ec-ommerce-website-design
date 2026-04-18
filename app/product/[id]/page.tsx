@@ -4,14 +4,14 @@ import { useState, useEffect, useRef } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowLeft, ShoppingCart, Check, Minus, Plus, ChevronLeft, ChevronRight, Truck, Shield, Leaf, Star, Zap } from 'lucide-react'
+import { ArrowLeft, ShoppingCart, Check, Minus, Plus, ChevronLeft, ChevronRight, Truck, Shield, Leaf, Star, Zap, Flame, Trophy, Beef } from 'lucide-react'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { CartSidebar } from '@/components/cart-sidebar'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { useCart } from '@/components/cart-context'
-import { getProductById, getRelatedProducts, makingProcess, badgeConfig, type ProductDetails } from '@/lib/products'
+import { getProductById, getRelatedProducts, badgeConfig, type ProductDetails } from '@/lib/products'
 
 export default function ProductPage() {
   const params = useParams()
@@ -23,10 +23,7 @@ export default function ProductPage() {
   const [selectedImage, setSelectedImage] = useState(0)
   const [quantity, setQuantity] = useState(1)
   const [isAdded, setIsAdded] = useState(false)
-  const [activeProcessStep, setActiveProcessStep] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
-  
-  const processRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const id = params.id as string
@@ -42,13 +39,6 @@ export default function ProductPage() {
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 100)
     return () => clearTimeout(timer)
-  }, [])
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveProcessStep((prev) => (prev + 1) % makingProcess.length)
-    }, 4000)
-    return () => clearInterval(interval)
   }, [])
 
   const handleAddToCart = () => {
@@ -298,100 +288,86 @@ export default function ProductPage() {
           </div>
         </section>
 
-        {/* Making Process Section */}
-        <section ref={processRef} className="py-16 md:py-24 bg-card">
+        {/* Shop by Category Section */}
+        <section className="py-16 md:py-24 bg-background">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <span className="text-primary font-medium text-sm tracking-wider uppercase">
-                Our Craft
+                Browse Collection
               </span>
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4">
-                How We Make Our Jerky
+                Shop by Category
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                From premium beef selection to final packaging, every step is handled with care
+                Explore our premium jerky collections, each crafted for a unique taste experience.
               </p>
             </div>
 
-            {/* Process Slider */}
-            <div className="max-w-5xl mx-auto">
-              <div className="relative rounded-2xl overflow-hidden bg-background border shadow-xl">
-                <div className="grid grid-cols-1 md:grid-cols-2">
-                  {/* Image Side */}
-                  <div className="relative aspect-[4/3] md:aspect-auto">
-                    {makingProcess.map((step, index) => (
-                      <div
-                        key={step.step}
-                        className={`absolute inset-0 transition-all duration-700 ${
-                          activeProcessStep === index 
-                            ? 'opacity-100 scale-100' 
-                            : 'opacity-0 scale-105'
-                        }`}
-                      >
-                        <Image
-                          src={step.image}
-                          alt={step.title}
-                          fill
-                          className="object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent md:hidden" />
+            {/* Categories Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              {[
+                {
+                  name: 'Carnivore Crave',
+                  tagline: 'High Protein Snacks',
+                  description: '45g protein per bag',
+                  icon: Flame,
+                  bgClass: 'bg-gradient-to-br from-zinc-900 to-zinc-800',
+                  accentClass: 'text-red-500',
+                  borderClass: 'hover:border-red-500/50',
+                  href: '/#products?category=carnivore-crave',
+                },
+                {
+                  name: 'Beef Jerky Slabs',
+                  tagline: 'Classic Jerky Cuts',
+                  description: 'Traditional thick-cut slabs',
+                  icon: Beef,
+                  bgClass: 'bg-gradient-to-br from-stone-800 to-stone-700',
+                  accentClass: 'text-orange-500',
+                  borderClass: 'hover:border-orange-500/50',
+                  href: '/#products?category=beef-jerky-slabs',
+                },
+                {
+                  name: 'Oakridge Beef Slabs',
+                  tagline: 'Premium Slabs',
+                  description: 'Extra-large vacuum sealed',
+                  icon: Trophy,
+                  bgClass: 'bg-gradient-to-br from-zinc-900 to-zinc-800',
+                  accentClass: 'text-amber-500',
+                  borderClass: 'hover:border-amber-500/50',
+                  href: '/#products?category=oakridge',
+                },
+              ].map((category, index) => {
+                const Icon = category.icon
+                return (
+                  <Link
+                    key={category.name}
+                    href={category.href}
+                    className={`group relative overflow-hidden rounded-xl border-2 border-transparent transition-all duration-500 ${category.borderClass} ${category.bgClass}`}
+                  >
+                    <div className="p-8 text-center relative z-10">
+                      <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 mb-5 transition-transform duration-300 group-hover:scale-110 ${category.accentClass}`}>
+                        <Icon className="h-8 w-8" />
                       </div>
-                    ))}
-                  </div>
-
-                  {/* Content Side */}
-                  <div className="p-8 md:p-12 flex flex-col justify-center">
-                    <div className="space-y-6">
-                      <div className="flex items-center gap-4">
-                        <span className="flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground font-bold text-xl">
-                          {makingProcess[activeProcessStep].step}
-                        </span>
-                        <div className="flex gap-1">
-                          {makingProcess.map((_, index) => (
-                            <button
-                              key={index}
-                              onClick={() => setActiveProcessStep(index)}
-                              className={`h-2 rounded-full transition-all duration-300 ${
-                                activeProcessStep === index 
-                                  ? 'w-8 bg-primary' 
-                                  : 'w-2 bg-muted hover:bg-muted-foreground/30'
-                              }`}
-                              aria-label={`Go to step ${index + 1}`}
-                            />
-                          ))}
-                        </div>
-                      </div>
-
-                      <div className="min-h-[120px]">
-                        <h3 className="font-serif text-2xl font-bold text-foreground mb-3 animate-fade-in">
-                          {makingProcess[activeProcessStep].title}
-                        </h3>
-                        <p className="text-muted-foreground leading-relaxed animate-fade-in-up">
-                          {makingProcess[activeProcessStep].description}
-                        </p>
-                      </div>
-
-                      <div className="flex gap-3 pt-4">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => setActiveProcessStep((prev) => (prev - 1 + makingProcess.length) % makingProcess.length)}
-                        >
-                          <ChevronLeft className="h-4 w-4 mr-1" />
-                          Previous
-                        </Button>
-                        <Button
-                          size="sm"
-                          onClick={() => setActiveProcessStep((prev) => (prev + 1) % makingProcess.length)}
-                        >
-                          Next
-                          <ChevronRight className="h-4 w-4 ml-1" />
-                        </Button>
+                      <h3 className="text-xl font-bold text-white mb-1 group-hover:scale-105 transition-transform duration-300">
+                        {category.name}
+                      </h3>
+                      <p className={`text-sm font-semibold mb-2 ${category.accentClass}`}>
+                        {category.tagline}
+                      </p>
+                      <p className="text-sm text-white/60">
+                        {category.description}
+                      </p>
+                      <div className={`mt-5 inline-flex items-center gap-2 text-sm font-semibold ${category.accentClass} opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0`}>
+                        Shop Now
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </Link>
+                )
+              })}
             </div>
           </div>
         </section>
