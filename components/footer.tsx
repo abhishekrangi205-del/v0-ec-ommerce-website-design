@@ -74,15 +74,15 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-background/70 text-sm">
                 <Mail className="h-4 w-4 flex-shrink-0" />
-                info@localjerkyplus.ca
+                localjerkyplus@gmail.com
               </li>
               <li className="flex items-center gap-2 text-background/70 text-sm">
                 <Phone className="h-4 w-4 flex-shrink-0" />
-                1-800-JERKY-CA
+                (705) 562-0397
               </li>
               <li className="flex items-center gap-2 text-background/70 text-sm">
                 <MapPin className="h-4 w-4 flex-shrink-0" />
-                Ontario, Canada
+                170 Fielding Rd, Lively, ON P3Y 1L5
               </li>
             </ul>
           </div>
