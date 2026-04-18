@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react'
 import { ArrowLeft, ShoppingCart, Check, Flame, Beef, Trophy, Filter, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { products, categoryInfo, badgeConfig, type ProductCategory, type ProductDetails } from '@/lib/products'
-import { useCart } from '@/components/cart-provider'
+import { useCart } from '@/components/cart-context'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 
