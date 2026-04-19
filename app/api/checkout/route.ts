@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
         {
           shipping_rate_data: {
             type: 'fixed_amount',
-            fixed_amount: { amount: 1000, currency: 'cad' }, // $10.00 CAD
+            fixed_amount: { amount: 100, currency: 'cad' }, // $1.00 CAD
             display_name: 'Standard Shipping',
             delivery_estimate: {
               minimum: { unit: 'business_day', value: 5 },
