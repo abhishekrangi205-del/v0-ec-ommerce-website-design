@@ -61,7 +61,7 @@ function ProductCard({ product }: { product: ProductDetails }) {
           src={product.image}
           alt={product.name}
           fill
-          className="object-contain p-2 md:p-4 transition-transform duration-500 group-hover:scale-105"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
           unoptimized
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
