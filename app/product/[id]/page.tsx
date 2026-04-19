@@ -104,12 +104,12 @@ export default function ProductPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
             {/* Image Gallery */}
             <div className="space-y-4">
-              <div className="relative aspect-square rounded-2xl overflow-hidden bg-card border">
+              <div className="relative aspect-square rounded-2xl overflow-hidden bg-card border p-6">
                 <Image
                   src={product.gallery[selectedImage].src}
                   alt={product.gallery[selectedImage].alt}
                   fill
-                  className="object-contain p-6 transition-all duration-500"
+                  className="object-contain transition-all duration-500"
                   priority
                 />
                 
@@ -140,9 +140,9 @@ export default function ProductPage() {
                   <button
                     key={index}
                     onClick={() => setSelectedImage(index)}
-                    className={`relative w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
-                      selectedImage === index 
-                        ? 'border-primary shadow-lg scale-105' 
+                    className={`relative w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-300 p-1 ${
+                      selectedImage === index
+                        ? 'border-primary shadow-lg scale-105'
                         : 'border-transparent hover:border-muted-foreground/30'
                     }`}
                   >
@@ -150,7 +150,7 @@ export default function ProductPage() {
                       src={img.src}
                       alt={img.alt}
                       fill
-                      className="object-contain p-2"
+                      className="object-contain"
                     />
                   </button>
                 ))}
@@ -467,13 +467,13 @@ export default function ProductPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {relatedProducts.map((relatedProduct) => (
-                <Link 
-                  key={relatedProduct.id} 
+                <Link
+                  key={relatedProduct.id}
                   href={`/product/${relatedProduct.id}`}
                   className="group"
                 >
                   <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                    <div className="relative aspect-square bg-muted/50">
+                    <div className="relative aspect-square bg-muted/50 p-4">
                       {/* Badge */}
                       {relatedProduct.badges.length > 0 && (
                         <span className={`absolute top-3 left-3 z-10 inline-flex items-center gap-1 px-2 py-1 text-xs font-bold rounded-md ${badgeConfig[relatedProduct.badges[0]].className}`}>
@@ -484,7 +484,7 @@ export default function ProductPage() {
                         src={relatedProduct.image}
                         alt={relatedProduct.name}
                         fill
-                        className="object-contain p-4 transition-transform duration-300 group-hover:scale-105"
+                        className="object-contain transition-transform duration-300 group-hover:scale-105"
                       />
                     </div>
                     <CardContent className="p-4">
