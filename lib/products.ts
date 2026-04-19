@@ -170,7 +170,7 @@ export const products: ProductDetails[] = [
     id: 'bjs-pepper-garlic',
     name: 'Beef Jerky Slabs - Pepper & Garlic',
     description: 'Classic beef jerky slabs with cracked pepper and garlic. Ontario made, 60g pack.',
-    longDescription: 'Our signature Beef Jerky Slabs in Cracked Pepper & Garlic deliver thick, hearty pieces of premium beef. Hand-cut and slowly dried, these slabs are perfect for tearing and sharing. The bold pepper and garlic combination creates a savory taste experience that keeps you coming back.',
+
     price: 13.40,
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Beef%20Jerky%20Pepper%20%26%20Garlic-Zwc1rHWq0xVhEUaaSwTI77T52UdLH6.png',
     gallery: [
@@ -304,7 +304,7 @@ export const products: ProductDetails[] = [
     id: 'oak-pepper-garlic',
     name: 'Oakridge Cracked Pepper & Garlic',
     description: 'Premium vacuum-sealed beef slab with cracked pepper and garlic. Extra large cut.',
-    longDescription: 'The Oakridge line represents our premium offering. These extra-large vacuum-sealed beef slabs are cut from the finest beef and seasoned with our signature cracked pepper and garlic blend. Each slab is a substantial piece of jerky perfection, visible through the clear packaging so you can see exactly what you are getting.',
+
     price: 10.00,
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Oakridge%20Cracked%20Pepper%20and%20Garlic%20Beef%20Slab-G8udLLeAXCpyB5vX8cTZnkVGIi7pTG.png',
     gallery: [
@@ -326,7 +326,7 @@ export const products: ProductDetails[] = [
     id: 'oak-teriyaki',
     name: 'Oakridge Teriyaki',
     description: 'Premium vacuum-sealed teriyaki beef slab. Sweet, savory, exceptional.',
-    longDescription: 'Our Oakridge Teriyaki combines premium quality with beloved teriyaki flavor. This extra-large vacuum-sealed slab showcases the beautiful caramelization of teriyaki glaze on premium beef. A truly exceptional snacking experience for those who appreciate quality.',
+
     price: 10.00,
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Oakridge%20Teriyaki-ePb0DnzSwJf54UFpV3d8OvlDiwBMQl.png',
     gallery: [
@@ -348,7 +348,7 @@ export const products: ProductDetails[] = [
     id: 'oak-traditional',
     name: 'Oakridge Traditional',
     description: 'Premium vacuum-sealed traditional beef slab. Classic flavor, premium quality.',
-    longDescription: 'The Oakridge Traditional represents jerky in its purest, most premium form. This extra-large vacuum-sealed slab lets the quality of the finest beef shine through with classic seasoning that enhances rather than overwhelms. For purists who appreciate authentic beef jerky at its finest.',
+
     price: 10.00,
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Oakridge%20Traditional-8DZwPamSZYpSJh8YCqrfNTl92zFvmD.png',
     gallery: [
