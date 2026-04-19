@@ -103,7 +103,7 @@ export const products: ProductDetails[] = [
     name: 'Carnivore Crave Traditional',
     description: 'High protein beef jerky bites with classic traditional flavor. 45g protein, 0g sugar.',
     longDescription: 'Fuel your day with our Carnivore Crave Traditional beef jerky bites. Packed with an incredible 45g of protein per bag and zero sugar, these bite-sized pieces are perfect for athletes, gym-goers, and anyone seeking a powerful protein snack. The traditional recipe delivers authentic beef flavor without any unnecessary additives.',
-    price: 1.00,
+    price: 14.00,
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Carnivore%20Crave%20Traditional-RPNRMJoGpc6iqp5WRedTXvq2N7sEZP.png',
     gallery: [
       { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Carnivore%20Crave%20Traditional-RPNRMJoGpc6iqp5WRedTXvq2N7sEZP.png', alt: 'Carnivore Crave Traditional Package' },
@@ -125,7 +125,7 @@ export const products: ProductDetails[] = [
     name: 'Carnivore Crave Pepper & Garlic',
     description: 'Bold cracked pepper and garlic flavor. 45g protein, 0g sugar per bag.',
     longDescription: 'Experience bold flavor without compromise. Our Carnivore Crave Pepper & Garlic delivers the perfect balance of freshly cracked black pepper and aromatic garlic, all while packing 45g of protein and zero sugar. Ideal for fitness enthusiasts who refuse to sacrifice taste for nutrition.',
-    price: 16.99,
+    price: 14.00,
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Carnivore%20Crave%20Pepper%20%26%20Garlic-uDhGaa98tfXizi1vKh9afkVbjMBe3y.png',
     gallery: [
       { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Carnivore%20Crave%20Pepper%20%26%20Garlic-uDhGaa98tfXizi1vKh9afkVbjMBe3y.png', alt: 'Carnivore Crave Pepper & Garlic Package' },
@@ -147,7 +147,7 @@ export const products: ProductDetails[] = [
     name: 'Carnivore Crave Teriyaki',
     description: 'Sweet and savory teriyaki with 45g protein. Perfect blend of flavor and nutrition.',
     longDescription: 'Who says high protein has to be boring? Our Carnivore Crave Teriyaki brings the beloved sweet and savory teriyaki flavor to your protein routine. With 45g of protein and 0g sugar, this is the perfect guilt-free indulgence for those who want flavor without compromise.',
-    price: 16.99,
+    price: 14.00,
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Carnivore%20Crave%20Teriyaki-rjCaebFKuviKYTvcLKW9pv8GZGi536.png',
     gallery: [
       { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Carnivore%20Crave%20Teriyaki-rjCaebFKuviKYTvcLKW9pv8GZGi536.png', alt: 'Carnivore Crave Teriyaki Package' },
@@ -171,7 +171,7 @@ export const products: ProductDetails[] = [
     name: 'Beef Jerky Slabs - Pepper & Garlic',
     description: 'Classic beef jerky slabs with cracked pepper and garlic. Ontario made, 60g pack.',
     longDescription: 'Our signature Beef Jerky Slabs in Cracked Pepper & Garlic deliver thick, hearty pieces of premium Canadian beef. Hand-cut and slowly dried, these slabs are perfect for tearing and sharing. The bold pepper and garlic combination creates a savory taste experience that keeps you coming back.',
-    price: 14.99,
+    price: 13.40,
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Beef%20Jerky%20Pepper%20%26%20Garlic-Zwc1rHWq0xVhEUaaSwTI77T52UdLH6.png',
     gallery: [
       { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Beef%20Jerky%20Pepper%20%26%20Garlic-Zwc1rHWq0xVhEUaaSwTI77T52UdLH6.png', alt: 'Beef Jerky Slabs Pepper & Garlic Package' },
@@ -193,7 +193,7 @@ export const products: ProductDetails[] = [
     name: 'Beef Jerky Slabs - Traditional',
     description: 'Classic traditional beef jerky slabs. Simple, authentic Canadian taste.',
     longDescription: 'Sometimes the classics are classic for a reason. Our Traditional Beef Jerky Slabs honor time-tested recipes with simple, authentic seasoning. The natural beef flavor takes center stage in these thick-cut slabs that deliver a satisfying chew and genuine taste.',
-    price: 14.99,
+    price: 13.40,
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Beef%20Jerky%20Traditional-ELaq432zjLQQTw1yLIvl6yuNuQmzwG.png',
     gallery: [
       { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Beef%20Jerky%20Traditional-ELaq432zjLQQTw1yLIvl6yuNuQmzwG.png', alt: 'Beef Jerky Slabs Traditional Package' },
@@ -215,7 +215,7 @@ export const products: ProductDetails[] = [
     name: 'Beef Jerky Slabs - Hickory',
     description: 'Slow-smoked hickory pork jerky slabs with rich, deep smoky flavor.',
     longDescription: 'Experience the Canadian wilderness with our Hickory Pork Jerky Slabs. Real hickory wood chips infuse each batch with deep, aromatic smokiness. The extended smoking process creates slabs with unparalleled depth of flavor and satisfying texture.',
-    price: 15.99,
+    price: 13.40,
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Beef%20Jerky%20Hickory-f4uK2JDvz3fRhFbZifVqB8UPQUrfKY.png',
     gallery: [
       { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Beef%20Jerky%20Hickory-f4uK2JDvz3fRhFbZifVqB8UPQUrfKY.png', alt: 'Beef Jerky Slabs Hickory Package' },
@@ -237,7 +237,7 @@ export const products: ProductDetails[] = [
     name: 'Beef Jerky Slabs - Firehouse 5',
     description: 'Fiery hot beef jerky slabs for those who love serious heat. Bring the fire!',
     longDescription: 'Heat seekers, this one is for you! Our Firehouse 5 Beef Jerky Slabs bring intense, building heat that will satisfy even the most dedicated spice lovers. Multiple pepper varieties create layers of heat that develop with each bite. Not for the faint of heart!',
-    price: 15.99,
+    price: 13.40,
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Beef%20Jerky%20Firehouse%205-F1Sw9t8s0xg3BxCfs4dL1V9oe7Ac3r.png',
     gallery: [
       { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Beef%20Jerky%20Firehouse%205-F1Sw9t8s0xg3BxCfs4dL1V9oe7Ac3r.png', alt: 'Beef Jerky Slabs Firehouse 5 Package' },
@@ -259,7 +259,7 @@ export const products: ProductDetails[] = [
     name: 'Beef Jerky Slabs - Cajun',
     description: 'Zesty Cajun seasoned beef jerky slabs with authentic Southern heat.',
     longDescription: 'Bring the taste of Louisiana to your snacking with our Cajun Beef Jerky Slabs. A proprietary blend of Cajun spices delivers zesty heat with notes of paprika, cayenne, and garlic. These thick-cut slabs offer bold Southern flavor in every bite.',
-    price: 15.99,
+    price: 13.40,
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Beef%20Jerky%20Cajun-2IXklbUCFB96aosh9KWfoK45IBGX7t.png',
     gallery: [
       { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Beef%20Jerky%20Cajun-2IXklbUCFB96aosh9KWfoK45IBGX7t.png', alt: 'Beef Jerky Slabs Cajun Package' },
@@ -281,7 +281,7 @@ export const products: ProductDetails[] = [
     name: 'Beef Jerky Slabs - Teriyaki',
     description: 'Sweet and savory teriyaki beef jerky slabs. Asian-inspired perfection.',
     longDescription: 'Experience the perfect fusion of East meets West with our Teriyaki Beef Jerky Slabs. Authentic teriyaki glaze caramelizes during drying, creating a slightly glossy finish and irresistible umami taste. Sweet, savory, and absolutely delicious.',
-    price: 14.99,
+    price: 13.40,
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Beef%20Jerky%20Teriyaki-yvzY597cBLsESWoy73h352btLlCPDI.png',
     gallery: [
       { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Beef%20Jerky%20Teriyaki-yvzY597cBLsESWoy73h352btLlCPDI.png', alt: 'Beef Jerky Slabs Teriyaki Package' },
@@ -305,7 +305,7 @@ export const products: ProductDetails[] = [
     name: 'Oakridge Cracked Pepper & Garlic',
     description: 'Premium vacuum-sealed beef slab with cracked pepper and garlic. Extra large cut.',
     longDescription: 'The Oakridge line represents our premium offering. These extra-large vacuum-sealed beef slabs are cut from the finest Canadian beef and seasoned with our signature cracked pepper and garlic blend. Each slab is a substantial piece of jerky perfection, visible through the clear packaging so you can see exactly what you are getting.',
-    price: 19.99,
+    price: 10.00,
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Oakridge%20Cracked%20Pepper%20and%20Garlic%20Beef%20Slab-G8udLLeAXCpyB5vX8cTZnkVGIi7pTG.png',
     gallery: [
       { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Oakridge%20Cracked%20Pepper%20and%20Garlic%20Beef%20Slab-G8udLLeAXCpyB5vX8cTZnkVGIi7pTG.png', alt: 'Oakridge Pepper & Garlic Package' },
@@ -327,7 +327,7 @@ export const products: ProductDetails[] = [
     name: 'Oakridge Teriyaki',
     description: 'Premium vacuum-sealed teriyaki beef slab. Sweet, savory, exceptional.',
     longDescription: 'Our Oakridge Teriyaki combines premium quality with beloved teriyaki flavor. This extra-large vacuum-sealed slab showcases the beautiful caramelization of teriyaki glaze on premium Canadian beef. A truly exceptional snacking experience for those who appreciate quality.',
-    price: 19.99,
+    price: 10.00,
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Oakridge%20Teriyaki-ePb0DnzSwJf54UFpV3d8OvlDiwBMQl.png',
     gallery: [
       { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Oakridge%20Teriyaki-ePb0DnzSwJf54UFpV3d8OvlDiwBMQl.png', alt: 'Oakridge Teriyaki Package' },
@@ -349,7 +349,7 @@ export const products: ProductDetails[] = [
     name: 'Oakridge Traditional',
     description: 'Premium vacuum-sealed traditional beef slab. Classic flavor, premium quality.',
     longDescription: 'The Oakridge Traditional represents jerky in its purest, most premium form. This extra-large vacuum-sealed slab lets the quality of Canadian beef shine through with classic seasoning that enhances rather than overwhelms. For purists who appreciate authentic beef jerky at its finest.',
-    price: 19.99,
+    price: 10.00,
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Oakridge%20Traditional-8DZwPamSZYpSJh8YCqrfNTl92zFvmD.png',
     gallery: [
       { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Oakridge%20Traditional-8DZwPamSZYpSJh8YCqrfNTl92zFvmD.png', alt: 'Oakridge Traditional Package' },

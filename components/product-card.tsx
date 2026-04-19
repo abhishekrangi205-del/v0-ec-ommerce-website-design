@@ -92,12 +92,12 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
         )}
 
         <Link href={`/product/${product.id}`} className="block">
-          <div className="relative aspect-square overflow-hidden bg-muted/50">
+          <div className="relative aspect-square overflow-hidden bg-muted/50 p-4">
             <Image
               src={product.image}
               alt={product.name}
               fill
-              className="object-contain p-4 transition-all duration-500 group-hover:scale-110"
+              className="object-contain transition-all duration-500 group-hover:scale-110"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
             {/* Hover overlay */}

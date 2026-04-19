@@ -56,12 +56,12 @@ function ProductCard({ product }: { product: ProductDetails }) {
       )}
 
       {/* Image */}
-      <Link href={`/product/${product.id}`} className="block relative aspect-square overflow-hidden bg-muted">
+      <Link href={`/product/${product.id}`} className="block relative aspect-square overflow-hidden bg-muted p-4">
         <Image
           src={product.image}
           alt={product.name}
           fill
-          className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+          className="object-contain transition-transform duration-500 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </Link>
