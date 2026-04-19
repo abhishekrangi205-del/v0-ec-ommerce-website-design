@@ -286,12 +286,13 @@ export default function AboutPage() {
                     </Button>
                   </div>
                 </div>
-                <div className="order-1 md:order-2 relative aspect-[3/2] md:aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                <div className="order-1 md:order-2 relative w-full rounded-2xl overflow-hidden shadow-2xl">
                   <Image
                     src={activeContent.image}
                     alt={activeContent.title}
-                    fill
-                    className="object-cover object-center transition-transform duration-700 hover:scale-105"
+                    width={1200}
+                    height={800}
+                    className="w-full h-auto object-cover transition-transform duration-700 hover:scale-105"
                     unoptimized
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 to-transparent" />
