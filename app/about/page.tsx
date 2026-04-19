@@ -23,7 +23,7 @@ Founder Shawn Scott began making jerky out of his home in Copper Cliff when he w
 Taking that advice seriously, Shawn built a licensed meat kitchen in his home and became provincially licensed through the Ministry of Agriculture, Food and Rural Affairs.
 
 Since officially launching in 2019, Local Jerky Plus has expanded into a fully licensed provincial meat plant located in Lively, Ontario. Today, the company produces thousands of packs of jerky daily while staying true to its roots of quality and consistency.`,
-      image: '/images/founder.jpg'
+      image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Our%20story-WzWuJ9Vq8ObImpn4Azeh6YgvlrUeKD.png'
     }
   },
   {
@@ -39,12 +39,12 @@ To deliver high-quality, high-protein jerky made locally with clean ingredients 
 We are committed to:
 
 - Producing premium jerky with exceptional taste and nutrition
-- Offering high-protein, low to zero sugar options
+- Offering high-protein, low to zero grams of sugar options
 - Maintaining strict quality standards in a licensed facility
 - Supporting local production and Canadian-made products
 
 Our goal is to fuel active lifestyles with products people can trust.`,
-      image: '/images/process.jpg'
+      image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Our%20mission-IpuymDOoB2AltMdndgrxQINjviAi93.png'
     }
   },
   {
@@ -58,7 +58,7 @@ Our goal is to fuel active lifestyles with products people can trust.`,
 Today, our team works out of a provincially licensed meat plant in Lively, Ontario, producing thousands of packs of jerky each day. Every member of our team is committed to maintaining quality, consistency, and efficiency at every step of the process.
 
 From production to packaging, we take pride in delivering a product that represents hard work, local roots, and high standards.`,
-      image: '/images/about-hero.jpg'
+      image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Our%20team-yrWW941ys5kjX1cgEHnITIjj7YUNDI.png'
     }
   }
 ]
@@ -72,12 +72,12 @@ const values = [
   {
     icon: Award,
     title: 'Premium Quality',
-    description: 'Only the finest Canadian beef makes it into our products.'
+    description: 'Only the finest beef makes it into our products.'
   },
   {
     icon: Heart,
     title: 'Health First',
-    description: 'Zero sugar and no fillers—just pure, wholesome protein.'
+    description: 'Zero grams of sugar and no fillers—just pure, wholesome protein.'
   },
   {
     icon: MapPin,
@@ -286,12 +286,14 @@ export default function AboutPage() {
                     </Button>
                   </div>
                 </div>
-                <div className="order-1 md:order-2 relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                <div className="order-1 md:order-2 relative w-full rounded-2xl overflow-hidden shadow-2xl">
                   <Image
                     src={activeContent.image}
                     alt={activeContent.title}
-                    fill
-                    className="object-cover transition-transform duration-700 hover:scale-105"
+                    width={1200}
+                    height={800}
+                    className="w-full h-auto object-cover transition-transform duration-700 hover:scale-105"
+                    unoptimized
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 to-transparent" />
                 </div>
@@ -312,7 +314,7 @@ export default function AboutPage() {
                 Ready to Taste the Difference?
               </h2>
               <p className="text-primary-foreground/90 text-lg mb-8">
-                Join thousands of jerky lovers who&apos;ve made the switch to premium, all-natural Canadian beef jerky.
+                Join thousands of jerky lovers who&apos;ve made the switch to premium beef jerky with zero grams of sugar.
               </p>
               <Button 
                 asChild 

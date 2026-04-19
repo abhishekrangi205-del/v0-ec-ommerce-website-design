@@ -6,17 +6,17 @@ import { Leaf, Award, Heart, MapPin } from 'lucide-react'
 const features = [
   {
     icon: Leaf,
-    title: 'All Natural',
+    title: 'Natural Ingredients',
     description: 'No artificial preservatives, colors, or flavors. Just pure, natural ingredients.',
   },
   {
     icon: Award,
     title: 'Premium Quality',
-    description: 'Made with the finest Canadian beef, carefully selected for superior taste.',
+    description: 'Made with the finest beef, carefully selected for superior taste.',
   },
   {
     icon: Heart,
-    title: 'Zero Sugar',
+    title: 'Zero Grams of Sugar',
     description: 'Perfect for health-conscious snackers and those following low-carb diets.',
   },
   {

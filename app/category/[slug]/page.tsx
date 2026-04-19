@@ -24,16 +24,16 @@ const categoryColors: Record<ProductCategory, { accent: string; bg: string; bord
 }
 
 function ProductCard({ product }: { product: ProductDetails }) {
-  const { addItem } = useCart()
+  const { addToCart } = useCart()
   const [isAdded, setIsAdded] = useState(false)
 
   const handleAddToCart = () => {
-    addItem({
+    addToCart({
       id: product.id,
       name: product.name,
+      description: product.description,
       price: product.price,
       image: product.image,
-      quantity: 1,
     })
     setIsAdded(true)
     setTimeout(() => setIsAdded(false), 2000)
@@ -61,7 +61,7 @@ function ProductCard({ product }: { product: ProductDetails }) {
           src={product.image}
           alt={product.name}
           fill
-          className="object-contain transition-transform duration-500 group-hover:scale-105"
+
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </Link>
