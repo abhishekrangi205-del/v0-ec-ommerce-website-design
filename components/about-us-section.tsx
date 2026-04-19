@@ -20,7 +20,7 @@ Founder Shawn Scott began making jerky out of his home in Copper Cliff when he w
 Taking that advice seriously, Shawn built a licensed meat kitchen in his home and became provincially licensed through the Ministry of Agriculture, Food and Rural Affairs.
 
 Since officially launching in 2019, Local Jerky Plus has expanded into a fully licensed provincial meat plant located in Lively, Ontario. Today, the company produces thousands of packs of jerky daily while staying true to its roots of quality and consistency.`,
-      image: '/images/founder.jpg'
+      image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Our%20story-WzWuJ9Vq8ObImpn4Azeh6YgvlrUeKD.png'
     }
   },
   {
@@ -36,12 +36,12 @@ To deliver high-quality, high-protein jerky made locally with clean ingredients 
 We are committed to:
 
 - Producing premium jerky with exceptional taste and nutrition
-- Offering high-protein, low to zero sugar options
+- Offering high-protein, low to zero grams of sugar options
 - Maintaining strict quality standards in a licensed facility
 - Supporting local production and Canadian-made products
 
 Our goal is to fuel active lifestyles with products people can trust.`,
-      image: '/images/process.jpg'
+      image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Our%20mission-IpuymDOoB2AltMdndgrxQINjviAi93.png'
     }
   },
   {
@@ -55,7 +55,7 @@ Our goal is to fuel active lifestyles with products people can trust.`,
 Today, our team works out of a provincially licensed meat plant in Lively, Ontario, producing thousands of packs of jerky each day. Every member of our team is committed to maintaining quality, consistency, and efficiency at every step of the process.
 
 From production to packaging, we take pride in delivering a product that represents hard work, local roots, and high standards.`,
-      image: '/images/about-hero.jpg'
+      image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Our%20team-yrWW941ys5kjX1cgEHnITIjj7YUNDI.png'
     }
   }
 ]
@@ -63,17 +63,17 @@ From production to packaging, we take pride in delivering a product that represe
 const values = [
   {
     icon: Leaf,
-    title: 'All Natural',
+    title: 'Natural Ingredients',
     description: 'No artificial preservatives, colors, or flavors.',
   },
   {
     icon: Award,
     title: 'Premium Quality',
-    description: 'Made with the finest Canadian beef.',
+    description: 'Made with the finest beef.',
   },
   {
     icon: Heart,
-    title: 'Zero Sugar',
+    title: 'Zero Grams of Sugar',
     description: 'Perfect for health-conscious snackers.',
   },
   {
@@ -193,12 +193,13 @@ export function AboutUsSection() {
                   </Link>
                 </Button>
               </div>
-              <div className="order-1 md:order-2 relative aspect-[4/3] rounded-xl overflow-hidden shadow-xl">
+              <div className="order-1 md:order-2 relative aspect-[3/2] md:aspect-[4/3] rounded-xl overflow-hidden shadow-xl">
                 <Image
                   src={activeContent.image}
                   alt={activeContent.title}
                   fill
-                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  className="object-cover object-center transition-transform duration-700 hover:scale-105"
+                  unoptimized
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/10 to-transparent" />
               </div>

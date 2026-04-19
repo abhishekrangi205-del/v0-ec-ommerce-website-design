@@ -39,7 +39,7 @@ To deliver high-quality, high-protein jerky made locally with clean ingredients 
 We are committed to:
 
 - Producing premium jerky with exceptional taste and nutrition
-- Offering high-protein, low to zero sugar options
+- Offering high-protein, low to zero grams of sugar options
 - Maintaining strict quality standards in a licensed facility
 - Supporting local production and Canadian-made products
 
@@ -72,12 +72,12 @@ const values = [
   {
     icon: Award,
     title: 'Premium Quality',
-    description: 'Only the finest Canadian beef makes it into our products.'
+    description: 'Only the finest beef makes it into our products.'
   },
   {
     icon: Heart,
     title: 'Health First',
-    description: 'Zero sugar and no fillers—just pure, wholesome protein.'
+    description: 'Zero grams of sugar and no fillers—just pure, wholesome protein.'
   },
   {
     icon: MapPin,
@@ -313,7 +313,7 @@ export default function AboutPage() {
                 Ready to Taste the Difference?
               </h2>
               <p className="text-primary-foreground/90 text-lg mb-8">
-                Join thousands of jerky lovers who&apos;ve made the switch to premium, all-natural Canadian beef jerky.
+                Join thousands of jerky lovers who&apos;ve made the switch to premium beef jerky with zero grams of sugar.
               </p>
               <Button 
                 asChild 

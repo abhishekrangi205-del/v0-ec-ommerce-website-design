@@ -70,7 +70,7 @@ export function HeroSection() {
                 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
               style={{ animationDelay: '0.4s' }}
             >
-              Up to 45g protein. Low to zero sugar. No fillers. Just real beef.
+              Up to 45g protein. Low to zero grams of sugar. No fillers. Just real beef.
             </p>
             <div 
               className={`flex flex-row gap-4

@@ -66,7 +66,7 @@ export function FeaturedProducts() {
             Featured Products
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Discover our handcrafted selection of premium beef jerky, made with the finest Canadian beef and natural ingredients.
+            Discover our handcrafted selection of premium beef jerky, made with the finest beef and natural ingredients.
           </p>
         </div>
 

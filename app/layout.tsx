@@ -15,7 +15,7 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: 'Local Jerky Plus | Premium Canadian Beef Jerky',
-  description: 'Handcrafted premium beef jerky made in Canada. All natural, no fillers, zero sugar. Experience the authentic taste of Canadian wilderness.',
+  description: 'Handcrafted premium beef jerky made in Canada. Natural ingredients, no fillers, zero grams of sugar. Experience authentic taste.',
   generator: 'v0.app',
   icons: {
     icon: [
