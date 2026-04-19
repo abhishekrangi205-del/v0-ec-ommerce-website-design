@@ -22,15 +22,14 @@ export async function POST(request: NextRequest) {
 
     const lineItems = cartItems.map((item: any) => ({
       price_data: {
-        currency: 'usd',
+        currency: 'cad',
         product_data: {
           name: item.name,
-          description: item.description,
-          images: [item.image],
+          description: item.description || '',
         },
         unit_amount: Math.round(item.price * 100), // Convert to cents
       },
-      quantity: item.quantity,
+      quantity: item.quantity || 1,
     }))
 
     // Get the base URL from various sources
