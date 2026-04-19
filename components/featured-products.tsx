@@ -60,14 +60,25 @@ export function FeaturedProducts() {
       <div className="container mx-auto px-4">
         <div className={`text-center mb-10 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
           <span className="text-sm font-semibold text-primary tracking-wider uppercase">
-            Our Selection
+            Crafted in Ontario
           </span>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4">
-            Featured Products
+            Real Beef. Real Flavor.
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Discover our handcrafted selection of premium beef jerky, made with the finest beef and natural ingredients.
+          <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
+            High-protein, zero grams of sugar beef jerky made from the finest cuts — no fillers, no shortcuts. Just bold taste you can fuel up on.
           </p>
+          {/* Round feature labels */}
+          <div className="flex flex-wrap justify-center gap-2">
+            {['45g Protein', 'Zero Sugar', 'Ontario Made', 'No Fillers', 'Zero Preservatives'].map((label) => (
+              <span
+                key={label}
+                className="px-4 py-1.5 rounded-full border border-primary/30 text-primary text-xs font-semibold bg-primary/5"
+              >
+                {label}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* Category Filter */}
