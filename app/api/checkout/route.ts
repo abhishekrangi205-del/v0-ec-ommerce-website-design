@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
         },
         unit_amount: Math.round(item.price * 100), // Convert to cents
       },
-      quantity: item.quantity,
+      quantity: item.quantity || 1,
     }))
 
     // Get the base URL from various sources
