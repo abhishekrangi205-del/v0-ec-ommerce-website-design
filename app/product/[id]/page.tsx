@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowLeft, ShoppingCart, Check, Minus, Plus, ChevronLeft, ChevronRight, Truck, Shield, Leaf, Star, Zap, Flame, Trophy, Beef } from 'lucide-react'
+import { ArrowLeft, ShoppingCart, Check, Minus, Plus, Truck, Shield, Leaf, Star, Zap, Flame, Trophy, Beef } from 'lucide-react'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { CartSidebar } from '@/components/cart-sidebar'
@@ -20,7 +20,6 @@ export default function ProductPage() {
   
   const [product, setProduct] = useState<ProductDetails | null>(null)
   const [relatedProducts, setRelatedProducts] = useState<ProductDetails[]>([])
-  const [selectedImage, setSelectedImage] = useState(0)
   const [quantity, setQuantity] = useState(1)
   const [isAdded, setIsAdded] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
@@ -31,7 +30,6 @@ export default function ProductPage() {
     if (foundProduct) {
       setProduct(foundProduct)
       setRelatedProducts(getRelatedProducts(id, 4))
-      setSelectedImage(0)
       setQuantity(1)
     }
   }, [params.id])
@@ -54,18 +52,6 @@ export default function ProductPage() {
     }
     setIsAdded(true)
     setTimeout(() => setIsAdded(false), 2000)
-  }
-
-  const nextImage = () => {
-    if (product) {
-      setSelectedImage((prev) => (prev + 1) % product.gallery.length)
-    }
-  }
-
-  const prevImage = () => {
-    if (product) {
-      setSelectedImage((prev) => (prev - 1 + product.gallery.length) % product.gallery.length)
-    }
   }
 
   if (!product) {
@@ -102,58 +88,17 @@ export default function ProductPage() {
         {/* Product Details Section */}
         <section className={`container mx-auto px-4 py-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
-            {/* Image Gallery */}
-            <div className="space-y-4">
+            {/* Product Image - single main image only */}
+            <div>
               <div className="relative aspect-square rounded-2xl overflow-hidden bg-card border p-6">
                 <Image
-                  src={product.gallery[selectedImage].src}
-                  alt={product.gallery[selectedImage].alt}
+                  src={product.image}
+                  alt={product.name}
                   fill
                   className="object-contain transition-all duration-500"
                   priority
+                  unoptimized
                 />
-                
-                {/* Navigation Arrows */}
-                {product.gallery.length > 1 && (
-                  <>
-                    <button
-                      onClick={prevImage}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/80 backdrop-blur-sm border shadow-lg hover:bg-background transition-all"
-                      aria-label="Previous image"
-                    >
-                      <ChevronLeft className="h-5 w-5" />
-                    </button>
-                    <button
-                      onClick={nextImage}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/80 backdrop-blur-sm border shadow-lg hover:bg-background transition-all"
-                      aria-label="Next image"
-                    >
-                      <ChevronRight className="h-5 w-5" />
-                    </button>
-                  </>
-                )}
-              </div>
-              
-              {/* Thumbnail Gallery */}
-              <div className="flex gap-3 justify-center">
-                {product.gallery.map((img, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setSelectedImage(index)}
-                    className={`relative w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-300 p-1 ${
-                      selectedImage === index
-                        ? 'border-primary shadow-lg scale-105'
-                        : 'border-transparent hover:border-muted-foreground/30'
-                    }`}
-                  >
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      fill
-                      className="object-contain"
-                    />
-                  </button>
-                ))}
               </div>
             </div>
 
