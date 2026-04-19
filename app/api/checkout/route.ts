@@ -44,6 +44,33 @@ export async function POST(request: NextRequest) {
       mode: 'payment',
       success_url: `${baseUrl}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${baseUrl}/checkout/cancel`,
+      shipping_address_collection: {
+        allowed_countries: ['CA', 'US'],
+      },
+      shipping_options: [
+        {
+          shipping_rate_data: {
+            type: 'fixed_amount',
+            fixed_amount: { amount: 1000, currency: 'cad' }, // $10.00 CAD
+            display_name: 'Standard Shipping',
+            delivery_estimate: {
+              minimum: { unit: 'business_day', value: 5 },
+              maximum: { unit: 'business_day', value: 7 },
+            },
+          },
+        },
+        {
+          shipping_rate_data: {
+            type: 'fixed_amount',
+            fixed_amount: { amount: 2000, currency: 'cad' }, // $20.00 CAD
+            display_name: 'Express Shipping',
+            delivery_estimate: {
+              minimum: { unit: 'business_day', value: 2 },
+              maximum: { unit: 'business_day', value: 3 },
+            },
+          },
+        },
+      ],
     })
 
     console.log('Checkout session created:', session.id)
