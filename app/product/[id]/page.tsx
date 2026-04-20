@@ -173,6 +173,50 @@ export default function ProductPage() {
                 ))}
               </div>
 
+              {/* Nutrition Facts */}
+              <div className="bg-card border rounded-xl p-6">
+                <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
+                  <Flame className="h-5 w-5 text-primary" />
+                  Nutrition Facts
+                </h3>
+                <div className="space-y-3">
+                  <div className="text-sm">
+                    <span className="text-muted-foreground">Serving Size:</span>
+                    <span className="ml-2 font-medium">{product.nutrition.servingSize}</span>
+                  </div>
+                  <div className="border-t pt-3">
+                    <div className="flex justify-between mb-2">
+                      <span className="font-bold">Calories</span>
+                      <span className="font-bold">{product.nutrition.calories}</span>
+                    </div>
+                    <div className="border-b pb-3 mb-3" />
+                    
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Protein</span>
+                        <span className="font-medium">{product.nutrition.protein}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Fat</span>
+                        <span className="font-medium">{product.nutrition.fat}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Carbs</span>
+                        <span className="font-medium">{product.nutrition.carbs}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Sodium</span>
+                        <span className="font-medium">{product.nutrition.sodium}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Sugar</span>
+                        <span className="font-medium text-green-600">{product.nutrition.sugar}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {/* Quantity & Add to Cart */}
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <div className="flex items-center border rounded-lg bg-muted/30">
