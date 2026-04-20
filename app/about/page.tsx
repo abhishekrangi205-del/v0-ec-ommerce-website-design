@@ -7,7 +7,7 @@ import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { CartSidebar } from '@/components/cart-sidebar'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, Leaf, Award, Heart, MapPin, Users, Clock, Target } from 'lucide-react'
+import { ArrowRight, Leaf, Award, Heart, MapPin, Clock, Target } from 'lucide-react'
 
 const tabs = [
   {
@@ -47,28 +47,7 @@ Our goal is to fuel active lifestyles with products people can trust.`,
       image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Our%20mission-IpuymDOoB2AltMdndgrxQINjviAi93.png'
     }
   },
-  {
-    id: 'team',
-    label: 'Our Team',
-    icon: Users,
-    content: {
-      title: 'Our Team',
-      description: `Local Jerky Plus Inc. was founded by Shawn Scott, whose dedication and vision turned a small home operation into a growing business.
 
-Today, our team works out of a provincially licensed meat plant in Lively, Ontario, producing thousands of packs of jerky each day. Every member of our team is committed to maintaining quality, consistency, and efficiency at every step of the process.
-
-From production to packaging, we take pride in delivering a product that represents hard work, local roots, and high standards.`,
-      image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Our%20team-yrWW941ys5kjX1cgEHnITIjj7YUNDI.png'
-    }
-  }
-]
-
-const values = [
-  {
-    icon: Leaf,
-    title: 'Natural Ingredients',
-    description: 'We never use artificial preservatives, colors, or flavors.'
-  },
   {
     icon: Award,
     title: 'Premium Quality',

@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { Leaf, Award, Heart, MapPin, Users, Clock, Target, ArrowRight } from 'lucide-react'
+import { Leaf, Award, Heart, MapPin, Clock, Target, ArrowRight } from 'lucide-react'
 
 const tabs = [
   {
@@ -44,28 +44,7 @@ Our goal is to fuel active lifestyles with products people can trust.`,
       image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Our%20mission-IpuymDOoB2AltMdndgrxQINjviAi93.png'
     }
   },
-  {
-    id: 'team',
-    label: 'Our Team',
-    icon: Users,
-    content: {
-      title: 'Our Team',
-      description: `Local Jerky Plus Inc. was founded by Shawn Scott, whose dedication and vision turned a small home operation into a growing business.
 
-Today, our team works out of a provincially licensed meat plant in Lively, Ontario, producing thousands of packs of jerky each day. Every member of our team is committed to maintaining quality, consistency, and efficiency at every step of the process.
-
-From production to packaging, we take pride in delivering a product that represents hard work, local roots, and high standards.`,
-      image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Our%20team-yrWW941ys5kjX1cgEHnITIjj7YUNDI.png'
-    }
-  }
-]
-
-const values = [
-  {
-    icon: Leaf,
-    title: 'Natural Ingredients',
-    description: 'No artificial preservatives, colors, or flavors.',
-  },
   {
     icon: Award,
     title: 'Premium Quality',
