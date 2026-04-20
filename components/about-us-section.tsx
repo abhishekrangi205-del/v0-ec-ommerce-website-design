@@ -44,7 +44,14 @@ Our goal is to fuel active lifestyles with products people can trust.`,
       image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Our%20mission-IpuymDOoB2AltMdndgrxQINjviAi93.png'
     }
   },
+]
 
+const values = [
+  {
+    icon: Leaf,
+    title: 'Natural Ingredients',
+    description: 'No artificial preservatives.',
+  },
   {
     icon: Award,
     title: 'Premium Quality',
@@ -136,10 +143,10 @@ export function AboutUsSection() {
         <div className={`${isVisible ? 'animate-fade-in-up animation-delay-200' : 'opacity-0'}`}>
           {/* Tab Navigation */}
           <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-10">
-            {tabs.map((tab) => (
+            {tabs.filter(tab => tab.id && tab.label).map((tab) => (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
+                onClick={() => setActiveTab(tab.id!)}
                 className={`flex items-center gap-2 px-5 py-3 rounded-full font-medium transition-all duration-300 
                   ${activeTab === tab.id 
                     ? 'bg-primary text-primary-foreground shadow-lg scale-105' 
