@@ -5,6 +5,8 @@ import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Check, AlertCircle } from 'lucide-react'
+import Header from '@/components/header'
+import Footer from '@/components/footer'
 
 export default function FundraisePage() {
   const [formData, setFormData] = useState({
@@ -97,6 +99,8 @@ export default function FundraisePage() {
   ]
 
   return (
+    <>
+    <Header />
     <main className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="py-12 md:py-20 px-4 bg-gradient-to-b from-primary/5 to-background">
@@ -345,5 +349,7 @@ export default function FundraisePage() {
         </div>
       </section>
     </main>
+    <Footer />
+    </>
   )
 }
