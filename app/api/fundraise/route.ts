@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
 
     // Send email to admin
     await resend.emails.send({
-      from: 'noreply@localjerkyplus.com',
+      from: 'Local Jerky Plus <onboarding@resend.dev>',
       to: 'carzhood@gmail.com',
       subject: `New Fundraising Request from ${organizationName}`,
       html: `
@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
 
     // Send confirmation email to user
     await resend.emails.send({
-      from: 'noreply@localjerkyplus.com',
+      from: 'Local Jerky Plus <onboarding@resend.dev>',
       to: email,
       subject: 'Fundraising Request Received - Local Jerky Plus',
       html: `
