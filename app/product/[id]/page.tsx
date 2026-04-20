@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowLeft, ShoppingCart, Check, Minus, Plus, Truck, Shield, Leaf, Star, Zap, Flame, Trophy, Beef } from 'lucide-react'
+import { ArrowLeft, ShoppingCart, Check, Minus, Plus, Truck, Shield, Leaf, Star, Zap, Flame, Trophy, Beef, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { CartSidebar } from '@/components/cart-sidebar'
@@ -23,6 +23,7 @@ export default function ProductPage() {
   const [quantity, setQuantity] = useState(1)
   const [isAdded, setIsAdded] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
+  const [activeSlide, setActiveSlide] = useState(0)
 
   useEffect(() => {
     const id = params.id as string
@@ -87,19 +88,96 @@ export default function ProductPage() {
 
         {/* Product Details Section */}
         <section className={`container mx-auto px-4 py-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
-            {/* Product Image - single main image only */}
-            <div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+            {/* Image Slider */}
+            <div className="space-y-3">
+              {/* Main Slide */}
               <div className="relative aspect-square rounded-2xl overflow-hidden bg-card border p-6">
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  fill
-                  className="object-contain transition-all duration-500"
-                  priority
-                  unoptimized
-                />
+                {/* Images */}
+                {[
+                  { src: product.image, alt: product.name },
+                  ...(product.gallery?.slice(1) ?? []),
+                ].map((img, index) => (
+                  <div
+                    key={index}
+                    className={`absolute inset-0 p-6 transition-opacity duration-500 ${activeSlide === index ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+                  >
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      className="object-contain"
+                      priority={index === 0}
+                      unoptimized
+                    />
+                  </div>
+                ))}
+
+                {/* Arrow buttons — only show if more than 1 image */}
+                {((product.gallery?.length ?? 0) > 1) && (
+                  <>
+                    <button
+                      onClick={() => setActiveSlide((prev) => (prev - 1 + (product.gallery?.length ?? 1)) % (product.gallery?.length ?? 1))}
+                      className="absolute left-3 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-background/80 backdrop-blur-sm border shadow-md hover:bg-background transition-all"
+                      aria-label="Previous image"
+                    >
+                      <ChevronLeft className="h-5 w-5" />
+                    </button>
+                    <button
+                      onClick={() => setActiveSlide((prev) => (prev + 1) % (product.gallery?.length ?? 1))}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-background/80 backdrop-blur-sm border shadow-md hover:bg-background transition-all"
+                      aria-label="Next image"
+                    >
+                      <ChevronRight className="h-5 w-5" />
+                    </button>
+                  </>
+                )}
               </div>
+
+              {/* Dot indicators */}
+              {((product.gallery?.length ?? 0) > 1) && (
+                <div className="flex justify-center gap-2">
+                  {[
+                    product.image,
+                    ...(product.gallery?.slice(1).map(g => g.src) ?? []),
+                  ].map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setActiveSlide(index)}
+                      className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${activeSlide === index ? 'bg-primary scale-125' : 'bg-muted-foreground/30 hover:bg-muted-foreground/60'}`}
+                      aria-label={`Go to image ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              )}
+
+              {/* Thumbnail strip */}
+              {((product.gallery?.length ?? 0) > 1) && (
+                <div className="flex gap-3 justify-center">
+                  {[
+                    { src: product.image, alt: product.name },
+                    ...(product.gallery?.slice(1) ?? []),
+                  ].map((img, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setActiveSlide(index)}
+                      className={`relative w-16 h-16 rounded-lg overflow-hidden border-2 transition-all duration-300 bg-card p-1 ${
+                        activeSlide === index
+                          ? 'border-primary shadow-md scale-105'
+                          : 'border-transparent hover:border-muted-foreground/40'
+                      }`}
+                    >
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        fill
+                        className="object-contain"
+                        unoptimized
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Product Info */}
