@@ -16,10 +16,6 @@ export default function FundraisePage() {
     lastName: '',
     email: '',
     phone: '',
-    address: '',
-    city: '',
-    province: '',
-    postalCode: '',
   })
   
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -53,10 +49,6 @@ export default function FundraisePage() {
           lastName: '',
           email: '',
           phone: '',
-          address: '',
-          city: '',
-          province: '',
-          postalCode: '',
         })
       } else {
         setStatus('error')
@@ -282,58 +274,7 @@ export default function FundraisePage() {
                   </div>
                 </div>
 
-                {/* Address Info */}
-                <div className="space-y-4">
-                  <h3 className="font-semibold text-lg">Address</h3>
-                  
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Street Address *</label>
-                    <input
-                      type="text"
-                      name="address"
-                      value={formData.address}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                    />
-                  </div>
 
-                  <div className="grid md:grid-cols-3 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium mb-2">City *</label>
-                      <input
-                        type="text"
-                        name="city"
-                        value={formData.city}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium mb-2">Province *</label>
-                      <input
-                        type="text"
-                        name="province"
-                        value={formData.province}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium mb-2">Postal Code *</label>
-                      <input
-                        type="text"
-                        name="postalCode"
-                        value={formData.postalCode}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                      />
-                    </div>
-                  </div>
-                </div>
 
                 <Button 
                   type="submit" 

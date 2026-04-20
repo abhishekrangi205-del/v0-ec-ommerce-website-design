@@ -14,14 +14,10 @@ export async function POST(request: NextRequest) {
       lastName,
       email,
       phone,
-      address,
-      city,
-      province,
-      postalCode,
     } = body
 
     // Validate required fields
-    if (!organizationName || !organizationType || !firstName || !lastName || !email || !phone || !address || !city || !province || !postalCode) {
+    if (!organizationName || !organizationType || !firstName || !lastName || !email || !phone) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
@@ -31,7 +27,7 @@ export async function POST(request: NextRequest) {
     // Send email to admin
     await resend.emails.send({
       from: 'noreply@localjerkyplus.com',
-      to: 'abhishekrangi413@gmail.com',
+      to: 'carzhood@gmail.com',
       subject: `New Fundraising Request from ${organizationName}`,
       html: `
         <h2>New Fundraising Request</h2>
@@ -43,12 +39,6 @@ export async function POST(request: NextRequest) {
         <p><strong>Name:</strong> ${firstName} ${lastName}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Phone:</strong> ${phone}</p>
-        
-        <h3>Address</h3>
-        <p><strong>Street:</strong> ${address}</p>
-        <p><strong>City:</strong> ${city}</p>
-        <p><strong>Province:</strong> ${province}</p>
-        <p><strong>Postal Code:</strong> ${postalCode}</p>
       `,
     })
 
