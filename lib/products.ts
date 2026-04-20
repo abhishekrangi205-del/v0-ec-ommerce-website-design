@@ -107,7 +107,7 @@ export const products: ProductDetails[] = [
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Carnivore%20Crave%20Traditional-RPNRMJoGpc6iqp5WRedTXvq2N7sEZP.png',
     gallery: [
       { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Carnivore%20Crave%20Traditional-RPNRMJoGpc6iqp5WRedTXvq2N7sEZP.png', alt: 'Carnivore Crave Traditional Package' },
-      { src: '/images/jerky-detail-1.jpg', alt: 'Jerky Texture Close-up' },
+      { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Carnivore%20Crave%20Traditional%202.png-gX6Z5A0C1ZMuYwOB58SGKSaCcTrm5u.jpeg', alt: 'Carnivore Crave Traditional Nutrition Facts' },
       { src: '/images/jerky-detail-2.jpg', alt: 'Jerky on Wooden Board' },
     ],
     features: ['45g Protein Per Bag', 'Zero Sugar', 'No Fillers', 'High Protein', 'Perfect for Gym', 'Travel Friendly'],
@@ -129,7 +129,7 @@ export const products: ProductDetails[] = [
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Carnivore%20Crave%20Pepper%20%26%20Garlic-uDhGaa98tfXizi1vKh9afkVbjMBe3y.png',
     gallery: [
       { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Carnivore%20Crave%20Pepper%20%26%20Garlic-uDhGaa98tfXizi1vKh9afkVbjMBe3y.png', alt: 'Carnivore Crave Pepper & Garlic Package' },
-      { src: '/images/jerky-detail-1.jpg', alt: 'Jerky Texture Close-up' },
+      { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Carnivore%20Crave%20Cracked%20Pepper%20%26%20Garlic.png-ejZnWxdD5ZGqeCBcgh7f75xYmLbxl5.jpeg', alt: 'Carnivore Crave Pepper & Garlic Nutrition Facts' },
       { src: '/images/jerky-detail-2.jpg', alt: 'Jerky on Wooden Board' },
     ],
     features: ['45g Protein Per Bag', 'Zero Sugar', 'Bold Flavor', 'High Protein', 'Gym Ready', 'No Fillers'],
@@ -151,7 +151,7 @@ export const products: ProductDetails[] = [
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Carnivore%20Crave%20Teriyaki-rjCaebFKuviKYTvcLKW9pv8GZGi536.png',
     gallery: [
       { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Carnivore%20Crave%20Teriyaki-rjCaebFKuviKYTvcLKW9pv8GZGi536.png', alt: 'Carnivore Crave Teriyaki Package' },
-      { src: '/images/jerky-detail-1.jpg', alt: 'Jerky Texture Close-up' },
+      { src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Carnivore%20Crave%20Teriyaki-Tlmgf1bp0gHBNvjDwbtWXzoBJGyhPd.jpeg', alt: 'Carnivore Crave Teriyaki Nutrition Facts' },
       { src: '/images/jerky-detail-2.jpg', alt: 'Jerky on Wooden Board' },
     ],
     features: ['45g Protein Per Bag', 'Zero Sugar', 'Sweet & Savory', 'No Artificial Flavors', 'Gym Approved', 'Travel Snack'],
