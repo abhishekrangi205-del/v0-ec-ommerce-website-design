@@ -87,23 +87,41 @@ export default function ProductPage() {
 
         {/* Product Details Section */}
         <section className={`container mx-auto px-4 py-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
-            {/* Product Image - single main image only */}
-            <div>
-              <div className="relative aspect-square rounded-2xl overflow-hidden bg-card border p-6">
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  fill
-                  className="object-contain transition-all duration-500"
-                  priority
-                  unoptimized
-                />
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+            {/* Product Images */}
+            <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {/* Main Product Image */}
+              <div>
+                <div className="relative aspect-square rounded-2xl overflow-hidden bg-card border p-6">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    className="object-contain transition-all duration-500"
+                    priority
+                    unoptimized
+                  />
+                </div>
               </div>
+              
+              {/* Nutrition Facts Package Image */}
+              {product.gallery && product.gallery[1] && (
+                <div>
+                  <div className="relative aspect-square rounded-2xl overflow-hidden bg-card border p-6">
+                    <Image
+                      src={product.gallery[1].src}
+                      alt={product.gallery[1].alt}
+                      fill
+                      className="object-contain transition-all duration-500"
+                      unoptimized
+                    />
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Product Info */}
-            <div className="space-y-6">
+            <div className="space-y-6 lg:col-span-1">
               {/* Badges */}
               <div className="flex flex-wrap gap-2">
                 {product.badges.map((badge) => {
