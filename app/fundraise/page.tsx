@@ -5,8 +5,8 @@ import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Check, AlertCircle } from 'lucide-react'
-import Header from '@/components/header'
-import Footer from '@/components/footer'
+import { Header } from '@/components/header'
+import { Footer } from '@/components/footer'
 
 export default function FundraisePage() {
   const [formData, setFormData] = useState({
