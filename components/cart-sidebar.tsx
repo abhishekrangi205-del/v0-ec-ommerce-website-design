@@ -1,7 +1,8 @@
 "use client"
 
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import { X, Plus, Minus, ShoppingBag, ShoppingCart } from 'lucide-react'
 import { useCart } from './cart-context'
 import { Button } from './ui/button'
@@ -9,7 +10,7 @@ import { products, badgeConfig } from '@/lib/products'
 
 export function CartSidebar() {
   const { items, addToCart, removeFromCart, updateQuantity, totalPrice, isCartOpen, setIsCartOpen, clearCart } = useCart()
-  const [isCheckingOut, setIsCheckingOut] = useState(false)
+  const router = useRouter()
 
   // Get upsell products - products not in cart, limit to 3
   const upsellProducts = useMemo(() => {
@@ -19,33 +20,9 @@ export function CartSidebar() {
       .slice(0, 3)
   }, [items])
 
-  const handleCheckout = async () => {
-    setIsCheckingOut(true)
-    try {
-      const response = await fetch('/api/checkout', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ cartItems: items }),
-      })
-
-      if (!response.ok) {
-        throw new Error('Failed to create checkout session')
-      }
-
-      const data = await response.json()
-
-      // Redirect to Stripe checkout
-      if (data.url) {
-        window.location.href = data.url
-      }
-    } catch (error) {
-      console.error('Checkout error:', error)
-      alert('Failed to start checkout. Please try again.')
-    } finally {
-      setIsCheckingOut(false)
-    }
+  const handleCheckout = () => {
+    setIsCartOpen(false)
+    router.push('/checkout')
   }
 
   if (!isCartOpen) return null
@@ -242,9 +219,8 @@ export function CartSidebar() {
               className="w-full btn-glow font-bold"
               size="lg"
               onClick={handleCheckout}
-              disabled={isCheckingOut}
             >
-              {isCheckingOut ? 'Processing...' : 'Checkout'}
+              Checkout
             </Button>
             <Button
               variant="ghost"
