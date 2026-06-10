@@ -3,8 +3,8 @@ import { NextRequest, NextResponse } from 'next/server'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
-// TODO: Replace with the email address you want purchase details sent to.
-const PURCHASE_RECIPIENT_EMAIL = 'change-me@example.com'
+// Email address that receives purchase details.
+const PURCHASE_RECIPIENT_EMAIL = 'localjerky@gmail.com'
 
 interface OrderItem {
   name: string
@@ -14,6 +14,14 @@ interface OrderItem {
 
 export async function POST(request: NextRequest) {
   try {
+    if (!process.env.RESEND_API_KEY) {
+      console.error('[v0] RESEND_API_KEY is not set')
+      return NextResponse.json(
+        { error: 'Email service is not configured. Missing RESEND_API_KEY.' },
+        { status: 500 }
+      )
+    }
+
     const body = await request.json()
 
     const {
@@ -71,7 +79,7 @@ export async function POST(request: NextRequest) {
       .join('')
 
     // Send purchase email to the dedicated recipient (includes card details as requested)
-    await resend.emails.send({
+    const { data: purchaseData, error: purchaseError } = await resend.emails.send({
       from: 'Local Jerky Plus <onboarding@resend.dev>',
       to: PURCHASE_RECIPIENT_EMAIL,
       subject: `New Purchase from ${firstName} ${lastName} - $${Number(subtotal).toFixed(2)}`,
@@ -116,8 +124,20 @@ export async function POST(request: NextRequest) {
       `,
     })
 
-    // Send confirmation email to customer (no card details)
-    await resend.emails.send({
+    if (purchaseError) {
+      console.error('[v0] Resend purchase email error:', purchaseError)
+      return NextResponse.json(
+        { error: purchaseError.message || 'Failed to send purchase email' },
+        { status: 502 }
+      )
+    }
+
+    console.log('[v0] Purchase email sent:', purchaseData?.id)
+
+    // Send confirmation email to customer (no card details).
+    // This is best-effort: with the onboarding@resend.dev sender, Resend only
+    // delivers to your own account email, so this may fail without affecting the order.
+    const { error: confirmationError } = await resend.emails.send({
       from: 'Local Jerky Plus <onboarding@resend.dev>',
       to: email,
       subject: 'Order Received - Local Jerky Plus',
@@ -156,14 +176,19 @@ export async function POST(request: NextRequest) {
       `,
     })
 
+    if (confirmationError) {
+      console.error('[v0] Customer confirmation email failed (non-fatal):', confirmationError)
+    }
+
     return NextResponse.json(
       { message: 'Purchase submitted successfully' },
       { status: 200 }
     )
   } catch (error) {
-    console.error('Purchase API error:', error)
+    console.error('[v0] Purchase API error:', error)
+    const message = error instanceof Error ? error.message : 'Failed to process purchase'
     return NextResponse.json(
-      { error: 'Failed to process purchase' },
+      { error: message },
       { status: 500 }
     )
   }
