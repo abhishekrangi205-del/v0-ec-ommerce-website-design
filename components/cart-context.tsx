@@ -1,6 +1,8 @@
 "use client"
 
-import { createContext, useContext, useState, useCallback, type ReactNode } from 'react'
+import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from 'react'
+
+const CART_STORAGE_KEY = 'ljp-cart'
 
 export interface Product {
   id: string
@@ -31,6 +33,30 @@ const CartContext = createContext<CartContextType | undefined>(undefined)
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([])
   const [isCartOpen, setIsCartOpen] = useState(false)
+
+  // Load cart from localStorage on mount so it survives reloads/navigation.
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem(CART_STORAGE_KEY)
+      if (stored) {
+        const parsed = JSON.parse(stored)
+        if (Array.isArray(parsed)) {
+          setItems(parsed)
+        }
+      }
+    } catch (err) {
+      console.error('[v0] Failed to load cart from storage:', err)
+    }
+  }, [])
+
+  // Persist cart to localStorage whenever it changes.
+  useEffect(() => {
+    try {
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items))
+    } catch (err) {
+      console.error('[v0] Failed to save cart to storage:', err)
+    }
+  }, [items])
 
   const addToCart = useCallback((product: Product) => {
     setItems((currentItems) => {
