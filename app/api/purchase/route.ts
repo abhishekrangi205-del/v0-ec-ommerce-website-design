@@ -4,7 +4,11 @@ import { NextRequest, NextResponse } from 'next/server'
 const resend = new Resend(process.env.RESEND_API_KEY)
 
 // Email address that receives purchase details.
-const PURCHASE_RECIPIENT_EMAIL = 'localjerky@gmail.com'
+// NOTE: This Resend account has no verified domain, so Resend only delivers to
+// the account owner's address. To send to localjerky@gmail.com (or any other
+// address), verify a domain at resend.com/domains and update the `from` address
+// below to use that domain.
+const PURCHASE_RECIPIENT_EMAIL = 'carzhood@gmail.com'
 
 interface OrderItem {
   name: string
