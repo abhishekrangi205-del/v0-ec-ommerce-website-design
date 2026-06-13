@@ -208,7 +208,7 @@ export default function CategoryPage() {
             </div>
             
             <p className="text-muted-foreground max-w-2xl text-lg">
-              {category === 'carnivore-crave' && 'High-protein beef jerky bites with up to 45g protein per bag. Zero sugar, no fillers. Perfect for athletes and fitness enthusiasts.'}
+              {category === 'carnivore-crave' && 'High-protein beef jerky bites with up to 45g protein per bag. Zero gram sugar, no fillers. Perfect for athletes and fitness enthusiasts.'}
               {category === 'beef-jerky-slabs' && 'Classic thick-cut beef jerky slabs made in Ontario. Traditional recipes with bold flavors in convenient 60g packs.'}
               {category === 'oakridge' && 'Our premium line of extra-large vacuum-sealed beef slabs. See exactly what you get with clear packaging and superior quality.'}
             </p>

@@ -70,7 +70,7 @@ export function FeaturedProducts() {
           </p>
           {/* Round feature labels */}
           <div className="flex flex-wrap justify-center gap-2">
-            {['45g Protein', 'Zero Sugar', 'Ontario Made', 'No Fillers', 'Zero Preservatives'].map((label) => (
+            {['45g Protein', 'Zero Gram Sugar', 'Ontario Made', 'No Fillers', 'Zero Preservatives'].map((label) => (
               <span
                 key={label}
                 className="px-4 py-1.5 rounded-full border border-primary/30 text-primary text-xs font-semibold bg-primary/5"
