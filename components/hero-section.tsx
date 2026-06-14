@@ -23,7 +23,7 @@ export function HeroSection() {
       <Link href="#products" className="block md:hidden">
         <div className="relative w-full" style={{ aspectRatio: '4/3' }}>
           <Image
-            src="/images/hero.jpg"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Hero%20picture%20-hxeiuZYMB2hJEhRmmNHIHd53SAndTc.png"
             alt="Premium beef jerky on rustic cutting board"
             fill
             className="object-cover"
@@ -36,7 +36,7 @@ export function HeroSection() {
       <div className="hidden md:flex relative min-h-[85vh] items-center">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/hero.jpg"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Hero%20picture%20-hxeiuZYMB2hJEhRmmNHIHd53SAndTc.png"
             alt="Premium beef jerky on rustic cutting board"
             fill
             className="object-cover"
